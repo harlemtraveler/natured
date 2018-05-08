@@ -4,7 +4,7 @@
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
 
-The purpose of this app is to ...
+The purpose of this app is to...
 
 - Site Example 1: https://www.amazon.com/
 - Site Example 2: https://www.ebay.com/
@@ -132,6 +132,8 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Post-MVP | 8 | 7hrs| 1hrs | 1hrs |
 | Total |  | 38hrs| 34hrs | 34hrs |
 
+## Technologies Used
 
+* Mashape API
 
 
