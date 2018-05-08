@@ -2,10 +2,10 @@
 
 ### Team Members
 
-Berniris Coleman
-Ricardo Del Castillo
-Genaya James
-Timothy Keaveny
+Berniris Coleman  
+Ricardo Del Castillo  
+Genaya James  
+Timothy Keaveny  
 
 ## Project Description
 
