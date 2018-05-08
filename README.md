@@ -1,5 +1,12 @@
 # nature`D
 
+### Team Members
+
+Berniris Coleman
+Ricardo Del Castillo
+Genaya James
+Timothy Keaveny
+
 ## Project Description
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
@@ -40,6 +47,7 @@ The purpose of this app is to be an e-commerce site for sports and outdoor activ
 | category_id | references categories(id) |
 | image_url | text not null |
 | amount | integer |
+| state_id | references states(id) |
 
 ### Table Name: categories
 | Column Name | Data Type |
