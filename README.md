@@ -134,6 +134,7 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 ## Technologies Used
 
-* Mashape API
+* Mashape Random Quotes API
+    - A collection of 60000+ Quotes with hundreds of different categories. Able to generate a random quote based on categories.
 
 
