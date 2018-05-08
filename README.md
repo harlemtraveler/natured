@@ -4,7 +4,8 @@
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
 
-The purpose of this app is to...
+The purpose of this app is to be an ecomerce site for sports and outdors activity. Where users are able do buy their favorite gear to help them fullfill their goals for their fitness and hobbies.
+
 
 - Site Example 1: https://www.amazon.com/
 - Site Example 2: https://www.ebay.com/
@@ -132,6 +133,12 @@ Users who are buyers are able to:
 ## POST MVP
 
 <!-- Include the full list of features that you are considering for POST MVP -->
+
+User:
+·Add ratings and comments.
+Us:
+·Add a pop up login page for login/ signup.
+
 
 
 ## Functional Components
