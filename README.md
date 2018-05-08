@@ -94,7 +94,9 @@ Include a full list of features that have been prioritized based on the `Time an
 ### Landing Page
 <!-- What will a user see when they start your app? -->
 A user will see a nav bar at the top with our logo and the login/signup link ass well.
+
 Furthermore, bellow the navbar a grid with asthetic images will appear, each representing a different sport/category. In each grid square there will be a link with the name of each category.
+
 When cliked the link will redirect to a page listing products from that category. 
 
 ### App Initialization
@@ -112,19 +114,19 @@ User will be able to view all products and filter products by categories, by cli
 
 Users who are buyers are able to:
 
-·create an account.
-·Delete their account.
-·Update their account.
-·View all products.
-·View by catgories.
-·Create a product.
-·Delete the product.
-·Update their product.
-·View all their products.
-·View a product.
-·Add to cart.
-·Delete from cart.
-·Buy product.
+* create an account.
+* Delete their account.
+* Update their account.
+* View all products.
+* View by catgories.
+* Create a product.
+* Delete the product.
+* Update their product.
+* View all their products.
+* View a product.
+* Add to cart.
+* Delete from cart.
+* Buy product.
 
 
 ## POST MVP
