@@ -4,8 +4,7 @@
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
 
-The purpose of this app is to be an ecomerce site for sports and outdors activity. Where users are able do buy their favorite gear to help them fullfill their goals for their fitness and hobbies.
-
+The purpose of this app is to be an e-commerce site for sports and outdoor activity. Users are able to buy their favorite gear to help them fullfill their goals for their fitness and hobbies.
 
 - Site Example 1: https://www.amazon.com/
 - Site Example 2: https://www.ebay.com/
@@ -76,7 +75,7 @@ The purpose of this app is to be an ecomerce site for sports and outdors activit
 
 ## Priority Matrix
 
-Include a full list of features that have been prioritized based on the `Time and Importance` Matrix. 
+<!-- Include a full list of features that have been prioritized based on the `Time and Importance` Matrix.  -->
 
 | Component | Priority | Estimated Time |
 | --- | :---: |  :---: |
@@ -94,19 +93,15 @@ Include a full list of features that have been prioritized based on the `Time an
 
 ### Landing Page
 <!-- What will a user see when they start your app? -->
-A user will see a nav bar at the top with our logo and the login/signup link ass well.
-
-Furthermore, bellow the navbar a grid with asthetic images will appear, each representing a different sport/category. In each grid square there will be a link with the name of each category.
-
-When cliked the link will redirect to a page listing products from that category. 
+A user will see a navbar at the top with our logo and the login/signup link ass well. Furthermore, below the navbar a grid with asthetic images will appear, each representing a different sport/category. In each grid square there will be a link with the name of each category. When clicked the link will redirect to a page listing products from that category. 
 
 ### App Initialization
 <!-- What will a user see when the app is started?  -->
-When the app is started the user will be able to see the the landing products and view specific categories and products. However, they wont be able to buy products unless they create an acoount or log in to an existing account.
+When the app is started the user will be able to see the the landing products and view specific categories and products. However, they won't be able to buy products unless they create an acount or log in to an existing account.
 
 ### Using The App
 <!-- What will be the flow of the game, what will the user be expected to do and what will the user expect from the game. -->
-User will be able to view all products and filter products by categories, by clicking links in the landing page and filtering in the products page. A unregistered user will only be able to buy a product when signing up or loging in. The users can create new products, update existing ones, view their products and delete old ones. Similarly, users are able to view all products, filter by category, save to their cart and delete from their cart, and buy products. They do so by navigating through the links and pressing a add button in each product. When this is pressed the product is saved to their cart. After the user has saved all the products that are desired they can press the cart icon to go to the buying page. Where they enter their card to pay for the item. 
+Users will be able to view all products and filter products by categories, by clicking links in the landing page and filtering in the products page. An unregistered user will only be able to buy a product when signing up or logging in. The users can create new products, update existing ones, view their products and delete old ones. Similarly, users are able to view all products, filter by category, save and delete from their cart, and buy products. They do so by navigating through the links and pressing an add button in each product. When this is pressed the product is saved to their cart. After the user has saved all the products they desire they can press the cart icon to go to the buying page, where they enter their card to pay for the item. 
 
 
 ## MVP 
@@ -115,29 +110,30 @@ User will be able to view all products and filter products by categories, by cli
 
 Users who are buyers are able to:
 
-* create an account.
-* Delete their account.
-* Update their account.
-* View all products.
-* View by catgories.
-* Create a product.
-* Delete the product.
-* Update their product.
-* View all their products.
-* View a product.
-* Add to cart.
-* Delete from cart.
-* Buy product.
+* Create an account
+* Delete their account
+* Update their account
+* View all products
+* View by catgories
+* Create a product
+* Delete the product
+* Update their product
+* View all their products
+* View a product
+* Add to cart
+* Delete from cart
+* Buy products
 
 
 ## POST MVP
 
 <!-- Include the full list of features that you are considering for POST MVP -->
 
-User:
-·Add ratings and comments.
-Us:
-·Add a pop up login page for login/ signup.
+* User:
+    - Add ratings and comments.
+    
+* Us:
+    - Add a pop up login page for login/ signup.
 
 
 
