@@ -17,6 +17,8 @@ The purpose of this app is to be an e-commerce site for sports and outdoor activ
 ![wireframe3](images/Nature'D-Login-Page.png)
 ![wireframe4](images/nature'D-Product-Page.png)
 ![wireframe5](images/Nature'D-Register-Page.png)
+![wireframe5](images/Nature'D-Shopping-Cart-Page.png)
+![wireframe5](images/Nature'D-Profile-Page.png)
 
 ## Database Schema
 
