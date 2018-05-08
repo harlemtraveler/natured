@@ -14,8 +14,6 @@ The purpose of this app is for ...
 <!-- Include images of your wireframes.  -->
 ![wireframe1](images/wireframe1.jpg)
 
-![wireframe2](images/wireframe2.jpg)
-
 ## Database Schema
 
 ### Table Name: users
@@ -124,13 +122,16 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
 | Component | Priority | Estimated Time | Time Invested | Actual Time |
 | --- | :---: |  :---: | :---: | :---: |
-| App Logic | 1 | 10hrs| 12hrs | 12hrs |
-| Database Setup | 2 | 1hrs| 1hrs | 1hrs |
-| Routes | 3 | 3hrs| 2hrs | 2hrs |
+| Database Setup | 1 | 1hrs| 1hrs | 1hrs |
+| Auth | 2 | 1hrs| 1hrs | 1hrs |
+| File Structure | 3 | 1hrs| 1hrs | 1hrs |
 | Page Layout | 4 | 8hrs| 6hrs | 6hrs |
-| Page Design | 5 | 9hrs| 12hrs | 12hrs |
-| Post-MVP | 6 | 7hrs| 1hrs | 1hrs |
+| Page Navigation / Routes | 5 | 4hrs| 2hrs | 2hrs |
+| Page Design | 6 | 9hrs| 12hrs | 12hrs |
+| App Logic | 7 | 10hrs| 12hrs | 12hrs |
+| Post-MVP | 8 | 7hrs| 1hrs | 1hrs |
 | Total |  | 38hrs| 34hrs | 34hrs |
+
 
 ## Helper Functions
 Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category.
