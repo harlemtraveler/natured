@@ -4,7 +4,7 @@
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
 
-The purpose of this app is for ...
+The purpose of this app is to ...
 
 - Site Example 1: https://www.amazon.com/
 - Site Example 2: https://www.ebay.com/
@@ -133,38 +133,5 @@ Time frames are also key in the development cycle.  You have limited time to cod
 | Total |  | 38hrs| 34hrs | 34hrs |
 
 
-## Helper Functions
-<!-- Helper functions should be generic enought that they can be reused in other applications. Use this section to document all helper functions that fall into this category. -->
 
-| Function | Description | 
-| --- | :---: |
-| toggleHide() | This will toggle the class 'hide' on or off element. The class hide has a display of none. | 
 
-## Technologies Used
-
-* OpenWeather API
-* Google Geolocation API
-
-## Code Snippet
-
-Use this section to include a brief code snippet of functionality that you are proud of and a brief description. 
-
-```
-
-  function example(arg) {
-    console.log('whatever');
-  }
-
-``` 
-<!-- Brief description here -->
-
-## Discoveries
- Use this section to list some, but not all, methods and\or functionality discovered while working on this project.
-
- * ex1
- * ex2
-
-## Issues and Resolutions
- Use this section to list of all major issues encountered and their resolution.
-
- One issue I had was...
