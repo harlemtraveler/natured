@@ -1,6 +1,9 @@
 const router = require('express').Router();
 
+const productsController = require('../controllers/productsController');
+const responseController = require('../controllers/responseController');
+
 router.route('/')
-  .get((req, res) => res.send('This is the new home page'))
+  .get(productsController.getAllProducts, responseController.sendStatus, responseController.sendError)
 
 module.exports = router;
