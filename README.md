@@ -1,5 +1,12 @@
 # nature`D
 
+### Team Members
+
+Berniris Coleman  
+Ricardo Del Castillo  
+Genaya James  
+Timothy Keaveny  
+
 ## Project Description
 
 <!-- Use this section to describe your final project and perhaps any links to relevant sites that help convey the concept and/or functionality. -->
@@ -12,13 +19,14 @@ The purpose of this app is to be an e-commerce site for sports and outdoor activ
 ## Wireframes
 
 <!-- Include images of your wireframes.  -->
-![wireframe1](images/wireframe1.jpg)
+
 ![wireframe2](images/Nature'D-Landing-Page.png)
 ![wireframe3](images/Nature'D-Login-Page.png)
 ![wireframe4](images/nature'D-Product-Page.png)
 ![wireframe5](images/Nature'D-Register-Page.png)
 ![wireframe5](images/Nature'D-Shopping-Cart-Page.png)
 ![wireframe5](images/Nature'D-Profile-Page.png)
+![wireframe5](images/wireframe1.jpg)
 
 ## Database Schema
 
@@ -42,6 +50,7 @@ The purpose of this app is to be an e-commerce site for sports and outdoor activ
 | category_id | references categories(id) |
 | image_url | text not null |
 | amount | integer |
+| state_id | references states(id) |
 
 ### Table Name: categories
 | Column Name | Data Type |
