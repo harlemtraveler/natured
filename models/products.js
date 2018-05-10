@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 function getAllProducts(){
   const queryPromise = db.manyOrNone(`
     SELECT user_id,name,description,price,category_id,stock FROM products
@@ -42,3 +43,24 @@ function updateProducts(products) {
 }
 
 
+=======
+const db = require('../config/connection');
+
+function getAllProducts() {
+  return db.any(`
+    SELECT * FROM products
+  `);
+}
+
+function getOneProduct(id) {
+  return db.one(`
+    SELECT * FROM products
+    WHERE id = $1
+  `, id)
+}
+
+module.exports = {
+  getAllProducts,
+  getOneProduct
+}
+>>>>>>> 66cb0f27e69f75d522175bd3faa0c5d770f49aad
