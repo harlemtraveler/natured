@@ -19,6 +19,26 @@ function register(user) {
   });
 }
 
+function findEmail(email) {
+  return db.one(`
+    SELECT * FROM users
+    WHERE email = $1
+  `, email);
+}
+
+function login(creds) {
+  return findEmail(creds.email)
+  .then(user => (
+    bcrypt.compare(creds.password, user.password_digest)
+    .then(match => {
+      if (!match) throw new Error('Email or password is incorrect');
+      delete user.password_digest;
+      return user;
+    })
+  ));
+}
+
 module.exports = {
-  register
+  register,
+  login
 }
