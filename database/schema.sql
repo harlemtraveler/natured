@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS states CASCADE;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  email VARCHAR(255),
+  email VARCHAR(255) UNIQUE NOT NULL,
   password_digest VARCHAR(255),
   birthday VARCHAR(255)
 );
