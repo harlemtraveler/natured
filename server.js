@@ -1,16 +1,21 @@
+require('dotenv').config();
+
 const express = require('express');
 const logger = require('morgan');
+const bodyParser = require('body-parser');
+
+const apiRouter = require('./routes/api');
+const authController = require('./controllers/authController');
 
 const app = express();
-
-app.use(logger('dev'));
-
 const PORT = process.env.PORT || 3001;
 
-app.get('/', (req, res) => {
-  res.send('This is the home page');
-})
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(authController.receiveToken);
 
-app.listen(PORT, (req, res) => {
+app.use('/api', apiRouter);
+
+app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 })
