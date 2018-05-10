@@ -18,7 +18,7 @@ function register(req, res) {
   });
 }
 
-function login(req, res, next) {
+function login(req, res) {
   authDb.login(req.body)
   .catch(err => res.status(401).json({
     status: 'Error',
@@ -36,7 +36,28 @@ function login(req, res, next) {
   })
 }
 
+function receiveToken(req, res, next) {
+  if(req.headers.authorization) {
+    req.authToken = req.headers.authorization.replace(/^Bearer\s/, '');
+  }
+  next();
+}
+
+function restrict(req, res, next) {
+  tokenService.verify(req.authToken)
+  .then(data => {
+    res.locals.user = data;
+    next();
+  })
+  .catch(err => res.status(401).json({
+    status: 'Error',
+    message: 'Invalid email or password'
+  }))
+}
+
 module.exports = {
   register,
-  login
+  login,
+  receiveToken,
+  restrict
 }
