@@ -15,7 +15,8 @@ CREATE TABLE products (
   description VARCHAR (256),
   price INTEGER,
   category_id INTEGER REFERENCES categories(id),
-  stock INTEGER
+  stock INTEGER,
+  img_url VARCHAR (256),
 );
 
 CREATE TABLE users (
@@ -58,3 +59,4 @@ CREATE TABLE shipping_address(
   adress_id VARCHAR(255),
   user_id INTEGER REFERENCES user(id)
 );*/
+
