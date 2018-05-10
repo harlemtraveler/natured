@@ -1,5 +1,3 @@
-
-
 body {
   font-family:'Cousine', monospace;
 }
@@ -25,8 +23,8 @@ body {
 .flex-item {
 /*  background: blue;*/
   padding: 10px;
-  width: 600px;
-  height: 300px;
+  width: 350px;
+  height: 250px;
   margin: 10px;
   text-align: center;
   margin-bottom: 20px;
@@ -34,8 +32,8 @@ body {
 
 .category-header {
 
-        width: 600px;
-        height: 300px;
+        width: 350px;
+        height: 250px;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: 50% 50%;
@@ -105,30 +103,47 @@ text-align: center;
   color: white;
 }
 
-.nav-links {
-  padding: 10px;
-  float: left;
-}
-
-.nav-float {
-  position: absolute;
-  text-align: left;
-  padding: 10px;
-  float: right;
+.navigation {
+  display: inline;
+  list-style: none;
 }
 
 ul {
-  list-style-type: none;
+  list-style: none;
+  display: inline;
+}
+
+li {
   float: left;
+  padding: 10px;
+}
+
+.nav-right {
+float: right;
+}
+
+.separator {
+  width: 700px;
+  height: 50px;
+}
+
+.logo {
+  position: absolute;
+  margin-left: 500px;
+  margin-top: -30px;
+}
+
+.space-right {
+  padding-right: 25px;
 }
 
 .feature-header {
-  margin-left: 520px;
-  margin-top: 100px;
+  margin-left: 600px;
+  margin-top: 40px;
   margin-bottom: 30px;
-  padding: 100px;
-  width: 500px;
-  height: 300px;
+  padding: 80px;
+  width: 400px;
+  height: 250px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -136,10 +151,10 @@ ul {
 
 .feature-text {
   position: absolute;
-  margin-left: -350px;
+  margin-left: -250px;
   margin-top: 300px;
   font-size: 20px;
   color: grey;
+  opacity: .3;
   width: 200px;
 }
-
