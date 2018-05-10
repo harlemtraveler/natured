@@ -1,28 +1,145 @@
-.App {
+
+
+body {
+  font-family:'Cousine', monospace;
+}
+
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-between;
+}
+
+
+
+.flex-item {
+/*  background: blue;*/
+  padding: 10px;
+  width: 600px;
+  height: 300px;
+  margin: 10px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.category-header {
+
+        width: 600px;
+        height: 300px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        margin-top: -10px;
+/*        border: 1px solid #813772;*/
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+/* unvisited link */
+a:link {
+    color: #062F4F;
+    text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #062F4F
+}
+
+/* mouse over link */
+a:hover {
+    color: #062F4F
+}
+
+/* selected link */
+a:active {
+    color: #062F4F;
+    text-decoration: none;
+}
+
+
+
+h1, h2 {
+/*  font-family: 'Do Hyeon', sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+}
+
+.category-name {
+  margin-top: 40px;
+}
+
+.nav {
+text-align: center;
+}
+
+.landing-img {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+}
+
+.landing-title {
+  font-size: 100px;
+  color: black;
+  letter-spacing: 50px;
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 10px;
+}
+
+.landing-text {
+  font-size: 15px;
+  letter-spacing: -1px;
+  margin-left: 30%;
   color: white;
 }
 
-.App-title {
-  font-size: 1.5em;
+.nav-links {
+  padding: 10px;
+  float: left;
 }
 
-.App-intro {
-  font-size: large;
+.nav-float {
+  position: absolute;
+  text-align: left;
+  padding: 10px;
+  float: right;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+ul {
+  list-style-type: none;
+  float: left;
 }
+
+.feature-header {
+  margin-left: 520px;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  padding: 100px;
+  width: 500px;
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.feature-text {
+  position: absolute;
+  margin-left: -350px;
+  margin-top: 300px;
+  font-size: 20px;
+  color: grey;
+  width: 200px;
+}
+
