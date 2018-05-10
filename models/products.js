@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 function getAllProducts(){
   const queryPromise = db.manyOrNone(`
     SELECT user_id,name,description,price,category_id,stock FROM products
@@ -63,4 +63,4 @@ module.exports = {
   getAllProducts,
   getOneProduct
 }
->>>>>>> 66cb0f27e69f75d522175bd3faa0c5d770f49aad
+
