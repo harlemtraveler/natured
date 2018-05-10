@@ -7,7 +7,6 @@ DROP TABLE IF EXISTS cart CASCADE;
 DROP TABLE IF EXISTS shipping_address CASCADE;
 DROP TABLE IF EXISTS states CASCADE;
 
-
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
@@ -28,7 +27,8 @@ CREATE TABLE products (
   description VARCHAR (256),
   price INTEGER,
   category_id INTEGER REFERENCES categories(id),
-  stock INTEGER
+  stock INTEGER,
+  img_url VARCHAR(256)
 );
 
 CREATE TABLE cart(
@@ -58,3 +58,4 @@ CREATE TABLE shipping_address(
   adress_id VARCHAR(255),
   user_id INTEGER REFERENCES user(id)
 );*/
+
