@@ -1,9 +1,23 @@
 const db = require('../config/connection');
 
 function getAllProducts(){
-  const queryPromise = db.manyOrNone(`
-    SELECT user_id,name,description,price,category_id,stock FROM products
-    JOIN users ON products.users_id = users.id JOIN categories ON products.category_id = categories.id
+  const queryPromise = db.any(`
+    SELECT user_id, name, description, price, category_id, stock
+    FROM products
+    JOIN categories
+    ON products.category_id = categories.id
+    `);
+  return queryPromise;
+}
+
+function getUserProducts(){
+  const queryPromise = db.any(`
+    SELECT user_id, name, description, price, category_id, stock
+    FROM products
+    JOIN users
+    ON products.user_id = users.id
+    JOIN categories
+    ON products.category_id = categories.id
     `);
   return queryPromise;
 }
