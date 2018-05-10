@@ -1,7 +1,7 @@
-const productsDB = require('../models/products');
+const productsDb = require('../models/products');
 
 function getAllProducts(req, res, next) {
-  productsDB.getAllProducts()
+  productsDb.getAllProducts()
   .then(data => {
     res.locals.products = data;
     next();
@@ -12,7 +12,7 @@ function getAllProducts(req, res, next) {
 }
 
 function getOneProduct(req, res, next) {
-  productsDB.getOneProduct(req.params.id)
+  productsDb.getOneProduct(req.params.id)
   .then(data => {
     res.locals.products = data;
     next();
