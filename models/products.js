@@ -41,4 +41,4 @@ function updateProducts(products) {
   return query;
 }
 
-user_id,name,description,price,category_id,stock
+
