@@ -1,8 +1,10 @@
+require('dotenv').config();
+
 const db = require('../config/connection');
 const bcrypt = require('bcrypt');
 
 function register(user) {
-  return bcrypt.hash(user.password, process.env.SALT)
+  return bcrypt.hash(user.password, parseInt(process.env.SALT))
   .then(hash => {
     const newUser = {
       email: user.email,

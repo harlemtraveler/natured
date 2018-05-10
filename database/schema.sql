@@ -12,7 +12,7 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255),
   password_digest VARCHAR(255),
-  birthday INTEGER
+  birthday VARCHAR(255)
 );
 
 CREATE TABLE categories (
