@@ -1,7 +1,7 @@
 function sendStatus(req, res) {
   res.status(200).json({
     status: 'ok',
-    products: res.locals.products
+    contents: res.locals.contents
   })
 }
 
