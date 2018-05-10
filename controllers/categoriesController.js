@@ -1,8 +1,9 @@
 const categoriesDb = require('../models/categories');
 
 function getAllCategories(req, res, next) {
-  categoriessDb.getAllCategories()
+  categoriesDb.getAllCategories()
   .then(data => {
+    console.log(data);
     res.locals.contents = data;
     next();
   })

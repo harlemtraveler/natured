@@ -19,8 +19,20 @@ class App extends Component {
   }
 
   fetchCategories() {
-    console.log('categories');
+    fetch('/api/categories')
+    .then(resp => {
+
+      if (!resp.ok) throw new Error('There was an error AKA not ricardos fault');
+      return resp.json()
+
+    })
+    .then(respBody => {
+      this.setState({
+        categories: respBody.contents
+     })
+    });
   }
+
 
   componentDidMount() {
     this.fetchProducts();
