@@ -10,7 +10,7 @@ function Landing(props) {
     color: 'white',
     border: '1px solid #ffffff',
     position: 'absolute',
-    top: '70%',
+    top: '60%',
     marginLeft: '45%',
     width: '150px'
   }

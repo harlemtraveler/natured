@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {grey900} from 'material-ui/styles/colors';
-import {grey50} from 'material-ui/styles/colors';
+import {fullWhite} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import AppBar from 'material-ui/AppBar';
@@ -8,7 +8,7 @@ import './App.css'
 
 
 
-class Categories extends Component {
+class App extends Component {
 constructor(props) {
   super(props);
 
@@ -22,28 +22,30 @@ const muiTheme = getMuiTheme ({
   },
   appBar: {
     height: 125,
-    color: grey50
+    color: fullWhite
   }
 });
     return (
 // each category image will be mapped through to create a individual flex items that link to all products
 // for that specific category
 <MuiThemeProvider muiTheme={muiTheme}>
-<AppBar title="NATURE'D" className="nav" titleStyle={grey900}>
-<div className="nav-links">
+<AppBar className="nav">
 <ul>
 <li>ABOUT</li>
 <li>LOGIN</li>
 <li>REGISTER</li>
 </ul>
+<div className="separator">
 </div>
-<div className="nav-links">
+<div className="logo"><img src="https://i.imgur.com/Sgc4hu9.jpg">
+</img>
+</div>
 <ul>
-<li>SHOP</li>
-<li>SELL</li>
-<li>FAQ</li>
+<li className="nav-right space-right">SHOP</li>
+<li className="nav-right">SELL</li>
+<li className="nav-right">FAQ</li>
 </ul>
-</div>
+
 </AppBar>
 <div class="flex-container">
 <div className="feature-text"><h1>ANDES MOUNTAINS</h1></div>
@@ -106,4 +108,4 @@ const muiTheme = getMuiTheme ({
   }
 }
 
-export default Categories;
+export default App;
