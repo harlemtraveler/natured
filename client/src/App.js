@@ -46,7 +46,7 @@ class App extends Component {
       <Router>
         <Switch>
           <Route exact path="/" render={() => (<Landing />)} />
-          <Route exact path="/categories" render={() => (<Categories />)} />
+          <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
           <Redirect to="/" />
         </Switch>
       </Router>
