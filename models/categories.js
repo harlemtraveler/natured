@@ -1,11 +1,11 @@
 const db = require('../config/connection');
 
-function getCategories() {
+function getAllCategories() {
   return db.any(`
     SELECT * FROM categories;
   `);
 }
 
 module.exports = {
-  getCategories
+  getAllCategories
 }
