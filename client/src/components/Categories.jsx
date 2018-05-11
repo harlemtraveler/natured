@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import '../App.css';
 import Category from './Category';
+import Banner from './Banner';
 
 class App extends Component {
   constructor(props) {
@@ -40,8 +41,7 @@ class App extends Component {
         <div>
           <div className="flex-container">
             {/* <div className="feature-text"><h1>ANDES MOUNTAINS</h1></div> */}
-            <div style={{backgroundImage: `url(https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80)`} } className="feature-header">
-            </div>
+            <Banner image="url(https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80)"/>
             {categories}
           </div>
         </div>
