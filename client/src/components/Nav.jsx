@@ -9,11 +9,8 @@ function Nav(props) {
           <li><a href="/login">LOGIN</a></li>
           <li><a href="/register">REGISTER</a></li>
         </ul>
-        <div className="logo">
-        <a href="/categories">
-        <img src="https://i.imgur.com/Sgc4hu9.jpg">
-          </img>
-          </a>
+        <div className="logo"><img src="https://i.imgur.com/Sgc4hu9.jpg" alt="Nature`D">
+        </img>
         </div>
         <ul>
           <li className="nav-right space-right"><a href="/categories">SHOP</a></li>
