@@ -4,7 +4,6 @@ import {fullWhite} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import '../App.css';
-import Nav from './Nav';
 import Category from './Category';
 
 class App extends Component {
