@@ -1,5 +1,6 @@
 const productsDb = require('../models/products');
 
+
 function getAllProducts(req, res, next) {
   console.log('getting products');
   productsDb.getAllProducts()
@@ -11,6 +12,9 @@ function getAllProducts(req, res, next) {
     next(err);
   })
 }
+
+
+
 
 function getOneProduct(req, res, next) {
   productsDb.getOneProduct(req.params.id)
