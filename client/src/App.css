@@ -144,15 +144,18 @@ float: right;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-
+  position: relative;
 }
 
 .feature-text {
   position: absolute;
-  margin-left: -250px;
-  margin-top: 300px;
+  top: 30px;
+  left: 30px;
   font-size: 20px;
   color: grey;
+  color: white;
   opacity: .3;
+  opacity: 1;
   width: 200px;
+  text-transform: uppercase;
 }

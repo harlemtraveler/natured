@@ -17,16 +17,23 @@ class App extends Component {
   }
 
   fetchProducts() {
-    console.log('products');
+    fetch('/api/products')
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        products: respBody.contents
+     })
+    });
   }
 
   fetchCategories() {
     fetch('/api/categories')
     .then(resp => {
-
       if (!resp.ok) throw new Error('There was an error AKA not ricardos fault');
       return resp.json()
-
     })
     .then(respBody => {
       this.setState({
@@ -35,6 +42,10 @@ class App extends Component {
     });
   }
 
+  selectCategory(category) {
+    const selectedCategory = this.state.categories.findIndex(aCategory => aCategory.categories.toLocaleLowerCase() === category);
+    return this.state.categories[selectedCategory];
+  }
 
   componentDidMount() {
     this.fetchProducts();
@@ -51,7 +62,7 @@ class App extends Component {
           <Route path="/:id" render={() => (<Nav />)} />
           <Switch>
             <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
-            <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } />)} />
+            <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} />)} />
             <Redirect to="/categories" />
           </Switch>
         </div>
