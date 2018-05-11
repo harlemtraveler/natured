@@ -23,14 +23,14 @@ body {
   display: flex;
 
   -webkit-flex-wrap: wrap;
-  justify-content: space-around;
   align-content: space-between;
 }
 
 .flex-item {
-/*  background: blue;*/
+  box-sizing: border-box;
   padding: 10px;
   width: 30%;
+  margin: 1.66%;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -42,7 +42,6 @@ body {
   background-repeat: no-repeat;
   background-position: 50% 50%;
   margin-top: -10px;
-/*        border: 1px solid #813772;*/
 }
 
 /* unvisited link */
@@ -79,10 +78,9 @@ h1, h2 {
 }
 
 .nav {
-text-align: center;
-height: 152px;
-box-shadow: 1px 1px 10px rgb(34,34,34);
-
+  text-align: center;
+  height: 152px;
+  box-shadow: 1px 1px 10px rgb(34,34,34);
 }
 
 .landing-img {
@@ -126,7 +124,7 @@ li {
 }
 
 .nav-right {
-float: right;
+  float: right;
 }
 
 .space-right {

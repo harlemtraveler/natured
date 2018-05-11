@@ -27,7 +27,7 @@ class Products extends Component {
           text={this.props.match.params.activity}
           />
         }
-        <div className="flex-container">
+        <div className="flex-container products">
           {products}
         </div>
       </div>
