@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../App.css';
 
 function Register (props) {
   return(
-<div>
-<form>
+    <div>
+      <form>
 
-</form>
-</div>
-)
+      </form>
+    </div>
+  )
 }
 
 export default Register;

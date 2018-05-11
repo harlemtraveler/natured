@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Categories from './components/Categories';
@@ -73,7 +73,7 @@ class App extends Component {
           <Route exact path="/login" render={() => (<Login/>)} />
           <Route exact path="/register" render={() => (<Register/>)} />
           <Route exact path="/FAQ" render={() => (<FAQ/>)} />
-          <Route exact path="/sell" render={() => (<Sell/>)} />  
+          <Route exact path="/sell" render={() => (<Sell/>)} />
         </div>
       </Router>
     );
