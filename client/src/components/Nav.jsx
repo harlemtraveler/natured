@@ -9,7 +9,7 @@ function Nav(props) {
           <li>LOGIN</li>
           <li>REGISTER</li>
         </ul>
-        <div className="logo"><img src="https://i.imgur.com/Sgc4hu9.jpg">
+        <div className="logo"><img src="https://i.imgur.com/Sgc4hu9.jpg" alt="Nature`D">
         </img>
         </div>
         <ul>
