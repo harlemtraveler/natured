@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import {grey900} from 'material-ui/styles/colors';
-import {fullWhite} from 'material-ui/styles/colors';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import '../App.css';
 import Nav from './Nav';
 import Category from './Category';
@@ -18,15 +14,6 @@ constructor(props) {
   render() {
     console.log(this.props.categories);
 
-const muiTheme = getMuiTheme ({
-  palette: {
-    textColor: grey900
-  },
-  appBar: {
-    height: 125,
-    color: fullWhite
-  }
-});
 
 const categories = this.props.categories.map(category => {
   return (
@@ -41,7 +28,6 @@ const categories = this.props.categories.map(category => {
     return (
 // each category image will be mapped through to create a individual flex items that link to all products
 // for that specific category
-<MuiThemeProvider muiTheme={muiTheme}>
 <div>
 <Nav />
 
@@ -56,7 +42,7 @@ const categories = this.props.categories.map(category => {
   </div>
 </div>
 </div>
-</MuiThemeProvider>
+
     );
   }
 }
