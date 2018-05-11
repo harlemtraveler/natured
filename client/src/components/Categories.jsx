@@ -7,56 +7,46 @@ import '../App.css';
 import Nav from './Nav';
 import Category from './Category';
 
-
-
 class App extends Component {
-constructor(props) {
-  super(props);
-
-
-}
-  render() {
-    console.log(this.props.categories);
-
-const muiTheme = getMuiTheme ({
-  palette: {
-    textColor: grey900
-  },
-  appBar: {
-    height: 125,
-    color: fullWhite
+  constructor(props) {
+    super(props);
   }
-});
 
-const categories = this.props.categories.map(category => {
-  return (
-    <Category
-      key={category.id}
-      category={category.categories}
-      image={category.img_url}
-    />
-)}
+  render() {
 
-  );
+    const muiTheme = getMuiTheme ({
+      palette: {
+        textColor: grey900
+      },
+      appBar: {
+        height: 125,
+        color: fullWhite
+      }
+    });
+
+    const categories = this.props.categories.map(category => {
+      return (
+        <Category
+          key={category.id}
+          category={category.categories}
+          image={category.img_url}
+        />
+      )
+    });
+
     return (
-// each category image will be mapped through to create a individual flex items that link to all products
-// for that specific category
-<MuiThemeProvider muiTheme={muiTheme}>
-<div>
-<Nav />
-
-<div >
-<div className="flex-container">
-
-{/* <div className="feature-text"><h1>ANDES MOUNTAINS</h1></div> */}
-<div style={{backgroundImage: `url(https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80)`} } className="feature-header">
-</div>
-  {categories}
-
-  </div>
-</div>
-</div>
-</MuiThemeProvider>
+      // each category image will be mapped through to create a individual flex items that link to all products
+      // for that specific category
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <div className="flex-container">
+            {/* <div className="feature-text"><h1>ANDES MOUNTAINS</h1></div> */}
+            <div style={{backgroundImage: `url(https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80)`} } className="feature-header">
+            </div>
+            {categories}
+          </div>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

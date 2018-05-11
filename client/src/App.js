@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Landing from './components/Landing';
+import Nav from './components/Nav';
 import Categories from './components/Categories';
+import Products from './components/Products'
 
 class App extends Component {
   constructor(props) {
@@ -44,11 +46,15 @@ class App extends Component {
     // each category image will be mapped through to create a individual flex items that link to all products
     // for that specific category
       <Router>
-        <Switch>
+        <div>
           <Route exact path="/" render={() => (<Landing />)} />
-          <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
-          <Redirect to="/" />
-        </Switch>
+          <Route path="/:id" render={() => (<Nav />)} />
+          <Switch>
+            <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
+            <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } />)} />
+            <Redirect to="/categories" />
+          </Switch>
+        </div>
       </Router>
     );
   }
