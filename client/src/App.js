@@ -4,6 +4,11 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Categories from './components/Categories';
+import About from './components/About';
+import Login from './components/Login';
+import Register from './components/Register';
+import FAQ from './components/FAQ';
+import Sell from './components/Sell';
 import Products from './components/Products'
 
 class App extends Component {
@@ -64,6 +69,11 @@ class App extends Component {
             <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
             <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} />)} />
           </Switch>
+          <Route exact path="/about" render={() => (<About/>)} />
+          <Route exact path="/login" render={() => (<Login/>)} />
+          <Route exact path="/register" render={() => (<Register/>)} />
+          <Route exact path="/FAQ" render={() => (<FAQ/>)} />
+          <Route exact path="/sell" render={() => (<Sell/>)} />  
         </div>
       </Router>
     );
