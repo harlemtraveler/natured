@@ -2,7 +2,7 @@ const db = require('../config/connection');
 
 function getAllProducts(){
   const queryPromise = db.any(`
-    SELECT user_id, name, description, price, category_id, stock
+    SELECT products.id, user_id, name, description, price, category_id, stock
     FROM products
     JOIN categories
     ON products.category_id = categories.id
