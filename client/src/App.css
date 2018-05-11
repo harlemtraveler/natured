@@ -30,11 +30,10 @@ body {
 
 
 .flex-item {
-/*  background: blue;*/
   padding: 10px;
   width: 30%;
   height: 300px;
-  text-align: center;
+/*  text-align: center;*/
   margin-bottom: 20px;
 }
 
@@ -46,7 +45,6 @@ body {
         background-repeat: no-repeat;
         background-position: 50% 50%;
         margin-top: -10px;
-/*        border: 1px solid #813772;*/
 }
 
 /* unvisited link */
@@ -74,7 +72,6 @@ a:active {
 
 
 h1, h2 {
-/*  font-family: 'Do Hyeon', sans-serif;*/
   font-family: 'Roboto', sans-serif;
 }
 
@@ -147,12 +144,3 @@ float: right;
 
 }
 
-.feature-text {
-  position: absolute;
-  margin-left: -250px;
-  margin-top: 300px;
-  font-size: 20px;
-  color: grey;
-  opacity: .3;
-  width: 200px;
-}
