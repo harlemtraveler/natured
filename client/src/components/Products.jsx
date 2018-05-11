@@ -13,8 +13,8 @@ class Products extends Component {
         return (
           <Product
             key={product.id}
-            name={product.name}
-            description={product.description}
+            product={product}
+            category={this.props.category}
           />
         )
       });
