@@ -43,8 +43,8 @@ class App extends Component {
   }
 
   selectCategory(category) {
-    const selectedCategory = this.state.categories.findIndex(aCategory => aCategory.categories.toLocaleLowerCase() === category);
-    return this.state.categories[selectedCategory];
+    const index = this.state.categories.findIndex(aCategory => aCategory.categories.toLocaleLowerCase() === category);
+    return this.state.categories[index];
   }
 
   componentDidMount() {

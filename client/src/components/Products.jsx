@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import Banner from './Banner';
+import Product from './Product';
 
 class Products extends Component {
-
-
   render() {
-    console.log(this.props);
+    let products;
+
+    if(this.props.category) {
+      products = this.props.products.filter(
+        prod => prod.category_id === this.props.category.id)
+      .map(product => {
+        return (
+          <Product
+            key={product.id}
+            name={product.name}
+            description={product.description}
+          />
+        )
+      });
+    }
+
     return (
       <div>
         {this.props.category && <Banner
@@ -13,7 +27,9 @@ class Products extends Component {
           text={this.props.match.params.activity}
           />
         }
-        {/*<h1>{this.props.match.params.activity}</h1>*/}
+        <div className="flex-container">
+          {products}
+        </div>
       </div>
     )
   }

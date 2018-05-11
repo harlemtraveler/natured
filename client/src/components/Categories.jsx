@@ -8,10 +8,6 @@ import Category from './Category';
 import Banner from './Banner';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     const muiTheme = getMuiTheme ({
