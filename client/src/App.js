@@ -9,7 +9,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import FAQ from './components/FAQ';
 import Sell from './components/Sell';
-import Products from './components/Products'
+import Products from './components/Products';
+import ProductsView from './components/ProductsView';
 
 class App extends Component {
   constructor(props) {
@@ -17,8 +18,10 @@ class App extends Component {
 
     this.state = {
       categories: [],
-      products: []
+      products: [],
     }
+
+    this.selectCategory = this.selectCategory.bind(this);
   }
 
   fetchProducts() {
@@ -67,7 +70,8 @@ class App extends Component {
           <Route path="/:id" render={() => (<Nav />)} />
           <Switch>
             <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
-            <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} />)} />
+            <Route exact path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} view={this.singleView}/>)} />
+            <Route path="/categories/:activity/:id" render={({ match }) => (<ProductsView match={ match } />)} />
           </Switch>
           <Route exact path="/about" render={() => (<About/>)} />
           <Route exact path="/login" render={() => (<Login/>)} />

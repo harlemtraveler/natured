@@ -7,7 +7,7 @@ import '../App.css';
 import Category from './Category';
 import Banner from './Banner';
 
-class App extends Component {
+class Categories extends Component {
   render() {
     const muiTheme = getMuiTheme ({
       palette: {
@@ -47,4 +47,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Categories;
