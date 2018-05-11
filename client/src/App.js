@@ -63,7 +63,6 @@ class App extends Component {
           <Switch>
             <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
             <Route path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} />)} />
-            <Redirect to="/categories" />
           </Switch>
         </div>
       </Router>
