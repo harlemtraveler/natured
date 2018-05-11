@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {grey900} from 'material-ui/styles/colors';
+import {fullWhite} from 'material-ui/styles/colors';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import '../App.css';
 import Category from './Category';
 import Banner from './Banner';
