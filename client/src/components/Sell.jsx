@@ -3,11 +3,11 @@ import '../App.css';
 import Nav from './Nav';
 
 
-function About (props) {
+function Sell (props) {
   return(
 <div>
 <Nav />
-<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+<p>"SELL YOUR STUFF HERE Lorem ipsum dolor sit amet, consectetur adipiscing elit,
 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
 nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
@@ -18,4 +18,4 @@ mollit anim id est laborum."</p>
 )
 }
 
-export default About;
+export default Sell;

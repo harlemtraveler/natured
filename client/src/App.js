@@ -3,6 +3,11 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Landing from './components/Landing';
 import Categories from './components/Categories';
+import About from './components/About';
+import Login from './components/Login';
+import Register from './components/Register';
+import FAQ from './components/FAQ';
+import Sell from './components/Sell';
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +52,11 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={() => (<Landing />)} />
           <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
+          <Route exact path="/about" render={() => (<About/>)} />
+          <Route exact path="/login" render={() => (<Login/>)} />
+          <Route exact path="/register" render={() => (<Register/>)} />
+          <Route exact path="/FAQ" render={() => (<FAQ/>)} />
+          <Route exact path="/sell" render={() => (<Sell/>)} />
           <Redirect to="/" />
         </Switch>
       </Router>
