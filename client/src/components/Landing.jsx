@@ -14,6 +14,7 @@ function Landing(props) {
     marginLeft: '45%',
     width: '150px'
   }
+
   return(
     <MuiThemeProvider>
       <div className="flex-container">
