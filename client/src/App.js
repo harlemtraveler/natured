@@ -7,7 +7,7 @@ import Categories from './components/Categories';
 import About from './components/About';
 import Login from './components/Login';
 import Register from './components/Register';
-import FAQ from './components/FAQ';
+import Cart from './components/Cart';
 import Sell from './components/Sell';
 import Products from './components/Products';
 import ProductsView from './components/ProductsView';
@@ -76,7 +76,7 @@ class App extends Component {
           <Route exact path="/about" render={() => (<About/>)} />
           <Route exact path="/login" render={() => (<Login/>)} />
           <Route exact path="/register" render={() => (<Register/>)} />
-          <Route exact path="/FAQ" render={() => (<FAQ/>)} />
+          <Route exact path="/cart" render={() => (<Cart/>)} />
           <Route exact path="/sell" render={() => (<Sell/>)} />
         </div>
       </Router>

@@ -18,7 +18,7 @@ function Nav(props) {
         <ul>
           <li className="nav-right space-right"><a href="/categories">SHOP</a></li>
           <li className="nav-right"><a href="/sell">SELL</a></li>
-          <li className="nav-right"><a href="/FAQ">FAQ</a></li>
+          <li className="nav-right"><a href="/cart">CART</a></li>
         </ul>
       </div>
     </div>
