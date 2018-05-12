@@ -179,3 +179,11 @@ li {
 .product-info {
   padding: 25px;
 }
+
+.name {
+  margin: 0;
+}
+
+.price {
+  line-height: 10px;
+}

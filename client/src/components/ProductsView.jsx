@@ -35,14 +35,26 @@ class ProductsView extends Component {
       backgroundSize: 'cover',
       backgroundPosition: 'center'
     }
+
+    const options = Array(this.state.product.stock).fill(0).map((quantity, i) => {
+      return (
+        <option key={i}>{i + 1}</option>
+      )
+    });
+
     return (
       <div className="flex-container single-product">
         <div>
-          <div style={imgStyle} className="product-image"></div>
+          {this.state.product.img_url && <div style={imgStyle} className="product-image"></div>}
         </div>
         <div className="product-info">
-          <h1>{this.state.product.name}</h1>
+          <h1 className="name">{this.state.product.name}</h1>
           <p>{this.state.product.description}</p>
+          <h3 className="price">Price: ${this.state.product.price}</h3>
+          <label htmlFor="stock">Quantity:</label>
+          <select>
+            {options}
+          </select>
         </div>
       </div>
     )
