@@ -9,6 +9,12 @@ class ProductsView extends Component {
     }
 
     this.fetchProduct = this.fetchProduct.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('hi');
   }
 
   fetchProduct() {
@@ -33,7 +39,7 @@ class ProductsView extends Component {
       height: '400px',
       backgroundImage: `url(${this.state.product.img_url})`,
       backgroundSize: 'cover',
-      backgroundPosition: 'center'
+      backgroundPosition: 'left'
     }
 
     const options = Array(this.state.product.stock).fill(0).map((quantity, i) => {
@@ -43,7 +49,7 @@ class ProductsView extends Component {
     });
 
     return (
-      <div className="flex-container single-product">
+      <div className="single-product">
         <div>
           {this.state.product.img_url && <div style={imgStyle} className="product-image"></div>}
         </div>
@@ -55,12 +61,15 @@ class ProductsView extends Component {
           </div>
           <div>
             <h3 className="price">Price: ${this.state.product.price}</h3>
+            <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="stock">Quantity:</label>
               <select>
                 {options}
               </select>
             </div>
+            <button value="submit">Add to Cart</button>
+            </form>
           </div>
         </div>
       </div>
