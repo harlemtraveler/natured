@@ -1,3 +1,8 @@
+INSERT INTO users
+  (email, password_digest, birthday)
+VALUES
+  ('testing@g.co', '$2b$12$Ky51py24IUAjv0grl81GhOpoeQvBWWiMKTf06wMacmD/7kW5aPMUK', 'april');
+
 INSERT INTO categories
   (categories, img_url)
 VALUES
