@@ -10,9 +10,9 @@ function Recommended(props) {
   }
 
   return (
-    <div class="recommended">
+    <div className="recommended">
       <div style={imgUrl}></div>
-      <div class="recommended-info">
+      <div className="recommended-info">
         <h3>{props.product.name}</h3>
         <h3>${props.product.price}</h3>
       </div>

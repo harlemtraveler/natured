@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function CartItems(props) {
-  console.log(props);
   const imgUrl = {
     width: '150px',
     height: '150px',
@@ -19,8 +18,8 @@ function CartItems(props) {
       <div className="cart-product-info">
         <h4>{props.product.name} ---- ${props.product.price}</h4>
         <p>{props.product.description}</p>
-        <p>Quantity: x5</p>
-        <Link to="/edit">Edit Purchase</Link>
+        <p>Quantity: x{props.product.quantity}</p>
+        <Link to="/edit">Edit Quantity</Link>
         <button>Delete From Cart</button>
       </div>
     </div>

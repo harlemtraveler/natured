@@ -10,7 +10,7 @@ class Total extends Component {
 
   render() {
     return (
-      <div class="total">
+      <div className="total">
         <h3>Total: ${this.state.total}</h3>
         <button>Checkout</button>
       </div>

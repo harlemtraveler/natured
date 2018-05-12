@@ -5,15 +5,29 @@ class ProductsView extends Component {
     super(props);
 
     this.state = {
-      product: []
+      product: [],
+      add: {
+        product_id: this.props.match.params.id,
+        quantity: '1'
+      }
     }
 
     this.fetchProduct = this.fetchProduct.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    const addedProduct = this.state.add;
+    addedProduct[e.target.name] = e.target.value;
+    this.setState({
+      add: addedProduct
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.addToCart(this.state.add)
     console.log('hi');
   }
 
@@ -63,8 +77,12 @@ class ProductsView extends Component {
             <h3 className="price">Price: ${this.state.product.price}</h3>
             <form onSubmit={this.handleSubmit}>
             <div>
-              <label htmlFor="stock">Quantity:</label>
-              <select>
+              <label htmlFor="quantity">Quantity:</label>
+              <select
+                name="quantity"
+                value={this.state.add.quantity}
+                onChange={this.handleChange}
+              >
                 {options}
               </select>
             </div>

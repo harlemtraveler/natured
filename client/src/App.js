@@ -19,9 +19,13 @@ class App extends Component {
     this.state = {
       categories: [],
       products: [],
+      user: {
+        id: 1
+      }
     }
 
     this.selectCategory = this.selectCategory.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   fetchProducts() {
@@ -40,7 +44,7 @@ class App extends Component {
   fetchCategories() {
     fetch('/api/categories')
     .then(resp => {
-      if (!resp.ok) throw new Error('There was an error AKA not ricardos fault');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json()
     })
     .then(respBody => {
@@ -48,6 +52,27 @@ class App extends Component {
         categories: respBody.contents
      })
     });
+  }
+
+  addToCart(info) {
+    console.log(info);
+    console.log('add to cart');
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(info),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch(`/api/cart/${this.state.user.id}`, options)
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(respBody => {
+      console.log(respBody);
+    })
   }
 
   selectCategory(category) {
@@ -71,7 +96,14 @@ class App extends Component {
           <Switch>
             <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
             <Route exact path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} view={this.singleView}/>)} />
-            <Route path="/categories/:activity/:id" render={({ match }) => (<ProductsView match={ match } />)} />
+            <Route
+              path="/categories/:activity/:id"
+              render={({ match }) => (
+                <ProductsView
+                  match={ match }
+                  addToCart={this.addToCart}
+                />
+              )} />
           </Switch>
           <Route exact path="/about" render={() => (<About/>)} />
           <Route exact path="/login" render={() => (<Login/>)} />

@@ -12,12 +12,16 @@ function getCartItems(req, res, next) {
 }
 
 function addToCart(req, res, next) {
+  req.body.user_id = req.params.id;
+  console.log(req.body);
   cartDb.addToCart(req.body)
   .then(data => {
+    console.log(data);
     res.locals.contents = data;
     next();
   })
   .catch(err => {
+    console.log(err.message);
     next(err);
   })
 }

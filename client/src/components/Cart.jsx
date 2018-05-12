@@ -9,12 +9,15 @@ class Cart extends Component {
     super(props);
     this.state = {
       cart: [],
-      recommended: []
+      recommended: [],
+      user: {
+        id: 1
+      }
     }
   }
 
   fetchCartItems() {
-    fetch('/api/products')
+    fetch(`/api/cart/${this.state.user.id}`)
     .then(resp => {
       if(!resp.ok) throw new Error('There was an error');
       return resp.json();
