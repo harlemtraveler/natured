@@ -20,6 +20,11 @@ CREATE TABLE categories (
   img_url TEXT NOT NULL
 );
 
+CREATE TABLE states (
+  id SERIAL PRIMARY KEY,
+  state VARCHAR(255)
+);
+
 CREATE TABLE products (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users(id),
@@ -28,18 +33,15 @@ CREATE TABLE products (
   price INTEGER,
   category_id INTEGER REFERENCES categories(id),
   stock INTEGER,
-  img_url VARCHAR(256)
+  img_url VARCHAR(256),
+  state_id INTEGER REFERENCES states(id)
 );
 
 CREATE TABLE cart(
   user_id VARCHAR(255),
   product_id VARCHAR(255),
+  quantity INTEGER,
   shipping_address VARCHAR(255)
-);
-
-CREATE TABLE states (
-  id SERIAL PRIMARY KEY,
-  state VARCHAR(255)
 );
 
 CREATE TABLE shipping_address(

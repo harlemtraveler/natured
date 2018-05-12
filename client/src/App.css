@@ -180,10 +180,21 @@ li {
   padding: 25px;
 }
 
-.name {
-  margin: 0;
+.product-info > *:nth-of-type(1) {
+  margin: -40px 0 80px;
+  text-align: center;
 }
 
-.price {
-  line-height: 10px;
+.product-info > *:nth-of-type(2) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-info label {
+  margin: 0 15px 0 0;
+}
+
+.location {
+  color: #89cf7a;
 }
