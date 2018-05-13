@@ -73,7 +73,7 @@ class Cart extends Component {
           {cartItems}
         </div>
         <div className="right-cart">
-          <Total />
+          <Total total={this.props.total}/>
           <h3>Recommended Items:</h3>
           {recommendedItems}
         </div>

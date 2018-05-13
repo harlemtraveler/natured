@@ -20,6 +20,7 @@ class App extends Component {
       categories: [],
       products: [],
       cart: [],
+      total: 0,
       user: {
         id: 1
       }
@@ -68,6 +69,23 @@ class App extends Component {
     })
   }
 
+  fetchOrderTotal() {
+    fetch(`/api/cart/total/${this.state.user.id}`)
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(data => {
+      let sum = data.contents[0].sum;
+      if(sum === null) {
+        sum = 0;
+      }
+      this.setState({
+        total: sum
+      })
+    })
+  }
+
   addToCart(info) {
     const options = {
       method: 'POST',
@@ -83,7 +101,7 @@ class App extends Component {
       return resp.json();
     })
     .then(() => {
-      this.fetchCartItems();
+      this.updateCart();
     })
   }
 
@@ -96,7 +114,7 @@ class App extends Component {
       return resp.json();
     })
     .then(respBody => {
-      this.fetchCartItems();
+      this.updateCart();
     })
   }
 
@@ -116,8 +134,13 @@ class App extends Component {
       return resp.json();
     })
     .then(respBody => {
-      this.fetchCartItems();
+      this.updateCart();
     })
+  }
+
+  updateCart() {
+    this.fetchCartItems();
+    this.fetchOrderTotal();
   }
 
   handleSubmit(info) {
@@ -140,7 +163,7 @@ class App extends Component {
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
-    this.fetchCartItems();
+    this.updateCart();
   }
 
   render() {
@@ -190,6 +213,7 @@ class App extends Component {
               render={({ history }) => (
                 <Cart
                   cartItems={this.state.cart}
+                  total={this.state.total}
                   onDelete={this.handleDelete}
                   onEdit={this.handleEdit}
                   history={history}

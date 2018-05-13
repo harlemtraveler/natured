@@ -46,9 +46,24 @@ function editCart(req, res, next) {
   })
 }
 
+function orderTotal(req, res, next) {
+  console.log(req.params.id);
+  cartDb.orderTotal(req.params.id)
+  .then(data => {
+    console.log(data);
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
+  })
+}
+
 module.exports = {
   getCartItems,
   addToCart,
   deleteFromCart,
-  editCart
+  editCart,
+  orderTotal
 }

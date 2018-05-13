@@ -37,9 +37,21 @@ function editCart(product) {
   `, product);
 }
 
+function orderTotal(id) {
+  console.log('order total');
+  return db.any(`
+    SELECT SUM(products.price * cart.quantity)
+    FROM products
+    JOIN cart
+    ON products.id = cart.product_id
+    WHERE cart.user_id = $1
+  `, id);
+}
+
 module.exports = {
   getCartItems,
   addToCart,
   deleteFromCart,
-  editCart
+  editCart,
+  orderTotal
 }

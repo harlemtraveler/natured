@@ -15,6 +15,13 @@ router.route('/:id')
     responseController.sendError
   )
 
+router.route('/total/:id')
+  .get(
+    cartController.orderTotal,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+
 router.route('/:id/:productId')
   .put(
     cartController.editCart,
