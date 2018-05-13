@@ -16,6 +16,7 @@ class CartForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.onEdit(this.state.edited);
     console.log(this.state.edited.quantity);
   }
 
@@ -53,7 +54,7 @@ class CartForm extends Component {
           <h4>{product.name} ---- ${product.price}</h4>
           <p>{product.description}</p>
           <form onSubmit={this.handleSubmit}>
-            <div>
+            <div className="edit-quantity">
               <label htmlFor="quantity">Quantity:</label>
               <select
                 name="quantity"
@@ -63,9 +64,9 @@ class CartForm extends Component {
                 {options}
               </select>
             </div>
+            <Link to="/cart">Cancel</Link>
             <button value="submit">Update Quantity</button>
           </form>
-          <Link to="/cart">Cancel</Link>
         </div>
       </div>
     )

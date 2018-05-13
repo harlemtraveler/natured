@@ -275,6 +275,10 @@ a:active {
   background: transparent;
 }
 
+.edit-quantity {
+  margin-bottom: 16px;
+}
+
 /* Total */
 
 .total {

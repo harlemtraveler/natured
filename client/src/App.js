@@ -26,6 +26,7 @@ class App extends Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
   }
 
   fetchProducts() {
@@ -99,12 +100,21 @@ class App extends Component {
     })
   }
 
+  editCart(info) {
+    info.user_id = this.state.user.id;
+    console.log(info);
+  }
+
   handleSubmit(info) {
     this.addToCart(info);
   }
 
   handleDelete(id) {
     this.deleteFromCart(id);
+  }
+
+  handleEdit(info) {
+    this.editCart(info);
   }
 
   selectCategory(category) {
@@ -165,6 +175,7 @@ class App extends Component {
                 <Cart
                   cartItems={this.state.cart}
                   onDelete={this.handleDelete}
+                  onEdit={this.handleEdit}
                 />
               )}
             />

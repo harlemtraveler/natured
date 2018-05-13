@@ -40,6 +40,7 @@ class Cart extends Component {
             path={`/cart/edit/${product.id}`}
             render={() => (
               <CartForm
+                onEdit={this.props.onEdit}
                 product={product}
               />
             )}
