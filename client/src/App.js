@@ -3,14 +3,14 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
-import Categories from './components/Categories';
+import Categories from './components/categories/Categories';
 import About from './components/About';
-import Login from './components/Login';
-import Register from './components/Register';
-import Cart from './components/Cart';
+import Login from './components/auth/Login';
+import Register from './components/auth/Register';
+import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
-import Products from './components/Products';
-import ProductsView from './components/ProductsView';
+import Products from './components/products/Products';
+import ProductsView from './components/products/ProductsView';
 
 class App extends Component {
   constructor(props) {
@@ -81,8 +81,8 @@ class App extends Component {
       if(!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
-    .then(respBody => {
-      console.log(respBody);
+    .then(() => {
+      console.log('hi');
     })
   }
 
@@ -124,51 +124,52 @@ class App extends Component {
     // for that specific category
       <Router>
         <div>
-          <Route exact path="/" render={() => (<Landing />)} />
-          <Route path="/:id" render={() => (<Nav />)} />
-          <Switch>
-            <Route
-              exact
-              path="/categories"
-              render={() => (
-                <Categories categories={this.state.categories}/>
-              )}
-            />
-            <Route
-              exact
-              path="/categories/:activity"
-              render={({ match }) => (
-                <Products
-                  match={ match }
-                  category={this.selectCategory(match.params.activity)}
-                  products={this.state.products}
-                  view={this.singleView}
-                />
-              )}
-            />
-            <Route
-              path="/categories/:activity/:id"
-              render={({ match }) => (
-                <ProductsView
-                  match={ match }
-                  onSubmit={this.handleSubmit}
-                />
-              )} />
-          </Switch>
-          <Route exact path="/about" render={() => (<About/>)} />
-          <Route exact path="/login" render={() => (<Login/>)} />
-          <Route exact path="/register" render={() => (<Register/>)} />
-          <Route
-            exact
-            path="/cart"
-            render={() => (
-              <Cart
-                cartItems={this.state.cart}
-                onDelete={this.handleDelete}
+          <main>
+            <Route exact path="/" render={() => (<Landing />)} />
+            <Route path="/:id" render={() => (<Nav />)} />
+            <Switch>
+              <Route
+                exact
+                path="/categories"
+                render={() => (
+                  <Categories categories={this.state.categories}/>
+                )}
               />
-            )}
-          />
-          <Route exact path="/sell" render={() => (<Sell/>)} />
+              <Route
+                exact
+                path="/categories/:activity"
+                render={({ match }) => (
+                  <Products
+                    match={ match }
+                    category={this.selectCategory(match.params.activity)}
+                    products={this.state.products}
+                    view={this.singleView}
+                  />
+                )}
+              />
+              <Route
+                path="/categories/:activity/:id"
+                render={({ match }) => (
+                  <ProductsView
+                    match={ match }
+                    onSubmit={this.handleSubmit}
+                  />
+                )} />
+            </Switch>
+            <Route path="/about" render={() => (<About/>)} />
+            <Route path="/login" render={() => (<Login/>)} />
+            <Route path="/register" render={() => (<Register/>)} />
+            <Route
+              path="/cart"
+              render={() => (
+                <Cart
+                  cartItems={this.state.cart}
+                  onDelete={this.handleDelete}
+                />
+              )}
+            />
+            <Route path="/sell" render={() => (<Sell/>)} />
+          </main>
         </div>
       </Router>
     );

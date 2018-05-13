@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../../App.css';
+import { Route, Switch } from 'react-router-dom';
 import CartItems from './CartItems';
+import CartForm from './CartForm';
 import Total from './Total';
 import Recommended from './Recommended';
 
@@ -32,11 +34,25 @@ class Cart extends Component {
   render() {
     const cartItems = this.props.cartItems.map(product => {
       return (
-        <CartItems
-          onDelete={this.props.onDelete}
-          key={product.id}
-          product={product}
-        />
+        <Switch key={product.id}>
+          <Route
+            exact
+            path={`/cart/edit/${product.id}`}
+            render={() => (
+              <CartForm
+                product={product}
+              />
+            )}
+          />
+          <Route
+            render={() => (
+              <CartItems
+                onDelete={this.props.onDelete}
+                product={product}
+              />
+            )}
+          />
+        </Switch>
       )
     });
 

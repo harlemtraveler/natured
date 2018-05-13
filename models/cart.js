@@ -2,7 +2,7 @@ const db = require('../config/connection');
 
 function getCartItems(user_id) {
   return db.any(`
-    SELECT c.id, p.name, p.description, p.price, p.img_url, c.quantity
+    SELECT c.id, p.name, p.description, p.price, p.stock, p.img_url, c.quantity
     FROM products p
     JOIN cart c
     ON p.id = c.product_id

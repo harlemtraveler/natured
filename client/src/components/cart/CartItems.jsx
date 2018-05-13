@@ -31,7 +31,7 @@ class CartItems extends Component {
           <h4>{product.name} ---- ${product.price}</h4>
           <p>{product.description}</p>
           <p>Quantity: x{product.quantity}</p>
-          <Link to="/edit">Edit Quantity</Link>
+          <Link to={`/cart/edit/${product.id}`}>Edit Quantity</Link>
           <button onClick={this.handleDelete}>Delete From Cart</button>
         </div>
       </div>

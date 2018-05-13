@@ -27,6 +27,7 @@ class ProductsView extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.onSubmit(this.state.add);
+    this.props.history.push('/cart');
   }
 
   fetchProduct() {
@@ -74,17 +75,17 @@ class ProductsView extends Component {
           <div>
             <h3 className="price">Price: ${this.state.product.price}</h3>
             <form onSubmit={this.handleSubmit}>
-            <div>
-              <label htmlFor="quantity">Quantity:</label>
-              <select
-                name="quantity"
-                value={this.state.add.quantity}
-                onChange={this.handleChange}
-              >
-                {options}
-              </select>
-            </div>
-            <button value="submit">Add to Cart</button>
+              <div>
+                <label htmlFor="quantity">Quantity:</label>
+                <select
+                  name="quantity"
+                  value={this.state.add.quantity}
+                  onChange={this.handleChange}
+                >
+                  {options}
+                </select>
+              </div>
+              <button value="submit">Add to Cart</button>
             </form>
           </div>
         </div>
