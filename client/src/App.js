@@ -83,7 +83,7 @@ class App extends Component {
       return resp.json();
     })
     .then(() => {
-      console.log('hi');
+      this.fetchCartItems();
     })
   }
 
@@ -101,8 +101,23 @@ class App extends Component {
   }
 
   editCart(info) {
-    info.user_id = this.state.user.id;
-    console.log(info);
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(info),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch(`/api/cart/${this.state.user.id}/${info.product_id}`,
+      options)
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(respBody => {
+      this.fetchCartItems();
+    })
   }
 
   handleSubmit(info) {
@@ -159,10 +174,11 @@ class App extends Component {
               />
               <Route
                 path="/categories/:activity/:id"
-                render={({ match }) => (
+                render={({ match, history }) => (
                   <ProductsView
                     match={ match }
                     onSubmit={this.handleSubmit}
+                    history={history}
                   />
                 )} />
             </Switch>
@@ -171,11 +187,12 @@ class App extends Component {
             <Route path="/register" render={() => (<Register/>)} />
             <Route
               path="/cart"
-              render={() => (
+              render={({ history }) => (
                 <Cart
                   cartItems={this.state.cart}
                   onDelete={this.handleDelete}
                   onEdit={this.handleEdit}
+                  history={history}
                 />
               )}
             />

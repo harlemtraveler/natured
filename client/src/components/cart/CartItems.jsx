@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import CartForm from './CartForm';
 
 class CartItems extends Component {
   constructor(props) {
@@ -30,9 +31,19 @@ class CartItems extends Component {
         <div className="cart-product-info">
           <h4>{product.name} ---- ${product.price}</h4>
           <p>{product.description}</p>
-          <p>Quantity: x{product.quantity}</p>
-          <Link to={`/cart/edit/${product.id}`}>Edit Quantity</Link>
-          <button onClick={this.handleDelete}>Delete From Cart</button>
+          {this.props.onDelete ? (
+            <div>
+              <p>Quantity: x{product.quantity}</p>
+              <Link to={`/cart/edit/${product.id}`}>Edit Quantity</Link>
+              <button onClick={this.handleDelete}>Delete From Cart</button>
+            </div>
+          ) : (
+            <CartForm
+              onEdit={this.props.onEdit}
+              product={product}
+              history={this.props.history}
+            />
+          )}
         </div>
       </div>
     )

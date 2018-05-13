@@ -13,15 +13,12 @@ function getCartItems(req, res, next) {
 
 function addToCart(req, res, next) {
   req.body.user_id = req.params.id;
-  console.log(req.body);
   cartDb.addToCart(req.body)
   .then(data => {
-    console.log(data);
     res.locals.contents = data;
     next();
   })
   .catch(err => {
-    console.log(err.message);
     next(err);
   })
 }
@@ -38,8 +35,7 @@ function deleteFromCart(req, res, next) {
 }
 
 function editCart(req, res, next) {
-  console.log(req.body);
-  req.body.id = req.params.productId;
+  req.body.user_id = req.params.id;
   cartDb.editCart(req.body)
   .then(data => {
     res.locals.contents = data;

@@ -31,7 +31,7 @@ function editCart(product) {
   return db.one(`
     UPDATE cart
     SET quantity = $/quantity/
-    WHERE product_id = $/id/
+    WHERE id = $/id/
     AND user_id = $/user_id/
     RETURNING *
   `, product);

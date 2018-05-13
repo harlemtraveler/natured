@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../../App.css';
 import { Route, Switch } from 'react-router-dom';
 import CartItems from './CartItems';
-import CartForm from './CartForm';
 import Total from './Total';
 import Recommended from './Recommended';
 
@@ -38,10 +37,11 @@ class Cart extends Component {
           <Route
             exact
             path={`/cart/edit/${product.id}`}
-            render={() => (
-              <CartForm
+            render={({ history }) => (
+              <CartItems
                 onEdit={this.props.onEdit}
                 product={product}
+                history={history}
               />
             )}
           />
