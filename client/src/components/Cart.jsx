@@ -8,25 +8,8 @@ class Cart extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart: [],
-      recommended: [],
-      user: {
-        id: 1
-      }
+      recommended: []
     }
-  }
-
-  fetchCartItems() {
-    fetch(`/api/cart/${this.state.user.id}`)
-    .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
-      return resp.json();
-    })
-    .then(data => {
-      this.setState({
-        cart: data.contents
-      })
-    })
   }
 
   fetchRecommendedItems() {
@@ -43,14 +26,14 @@ class Cart extends Component {
   }
 
   componentDidMount() {
-    this.fetchCartItems();
     this.fetchRecommendedItems();
   }
 
   render() {
-    const cartItems = this.state.cart.map(product => {
+    const cartItems = this.props.cartItems.map(product => {
       return (
         <CartItems
+          onDelete={this.props.onDelete}
           key={product.id}
           product={product}
         />

@@ -12,7 +12,6 @@ class ProductsView extends Component {
       }
     }
 
-    this.fetchProduct = this.fetchProduct.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -27,8 +26,7 @@ class ProductsView extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addToCart(this.state.add)
-    console.log('hi');
+    this.props.onSubmit(this.state.add);
   }
 
   fetchProduct() {

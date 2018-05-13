@@ -19,13 +19,13 @@ class App extends Component {
     this.state = {
       categories: [],
       products: [],
+      cart: [],
       user: {
         id: 1
       }
     }
-
-    this.selectCategory = this.selectCategory.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   fetchProducts() {
@@ -54,9 +54,20 @@ class App extends Component {
     });
   }
 
+  fetchCartItems() {
+    fetch(`/api/cart/${this.state.user.id}`)
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(data => {
+      this.setState({
+        cart: data.contents
+      })
+    })
+  }
+
   addToCart(info) {
-    console.log(info);
-    console.log('add to cart');
     const options = {
       method: 'POST',
       body: JSON.stringify(info),
@@ -75,6 +86,27 @@ class App extends Component {
     })
   }
 
+  deleteFromCart(productId) {
+    fetch(`/api/cart/${this.state.user.id}/${productId}`, {
+      method: 'DELETE'
+    })
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(respBody => {
+      this.fetchCartItems();
+    })
+  }
+
+  handleSubmit(info) {
+    this.addToCart(info);
+  }
+
+  handleDelete(id) {
+    this.deleteFromCart(id);
+  }
+
   selectCategory(category) {
     const index = this.state.categories.findIndex(aCategory => aCategory.categories.toLocaleLowerCase() === category);
     return this.state.categories[index];
@@ -83,6 +115,7 @@ class App extends Component {
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
+    this.fetchCartItems();
   }
 
   render() {
@@ -94,21 +127,47 @@ class App extends Component {
           <Route exact path="/" render={() => (<Landing />)} />
           <Route path="/:id" render={() => (<Nav />)} />
           <Switch>
-            <Route exact path="/categories" render={() => (<Categories categories={this.state.categories}/>)} />
-            <Route exact path="/categories/:activity" render={({ match }) => (<Products match={ match } category={this.selectCategory(match.params.activity)} products={this.state.products} view={this.singleView}/>)} />
+            <Route
+              exact
+              path="/categories"
+              render={() => (
+                <Categories categories={this.state.categories}/>
+              )}
+            />
+            <Route
+              exact
+              path="/categories/:activity"
+              render={({ match }) => (
+                <Products
+                  match={ match }
+                  category={this.selectCategory(match.params.activity)}
+                  products={this.state.products}
+                  view={this.singleView}
+                />
+              )}
+            />
             <Route
               path="/categories/:activity/:id"
               render={({ match }) => (
                 <ProductsView
                   match={ match }
-                  addToCart={this.addToCart}
+                  onSubmit={this.handleSubmit}
                 />
               )} />
           </Switch>
           <Route exact path="/about" render={() => (<About/>)} />
           <Route exact path="/login" render={() => (<Login/>)} />
           <Route exact path="/register" render={() => (<Register/>)} />
-          <Route exact path="/cart" render={() => (<Cart/>)} />
+          <Route
+            exact
+            path="/cart"
+            render={() => (
+              <Cart
+                cartItems={this.state.cart}
+                onDelete={this.handleDelete}
+              />
+            )}
+          />
           <Route exact path="/sell" render={() => (<Sell/>)} />
         </div>
       </Router>
