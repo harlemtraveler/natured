@@ -29,6 +29,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   fetchProducts() {
@@ -152,6 +153,26 @@ class App extends Component {
     })
   }
 
+  updateProductAfterCheckout(product) {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const userId = this.state.user.id;
+    const productId = product.product_id;
+    fetch(`/api/cart/${userId}/update/${productId}`, options)
+    .then(resp => {
+      if(!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(() => {
+      this.deleteFromCart(product.id);
+    })
+  }
+
   updateCart() {
     this.fetchCartItems();
     this.fetchOrderTotal();
@@ -167,6 +188,10 @@ class App extends Component {
 
   handleEdit(info) {
     this.editCart(info);
+  }
+
+  handleUpdate(info) {
+    this.updateProductAfterCheckout(info);
   }
 
   selectCategory(category) {
@@ -232,6 +257,7 @@ class App extends Component {
                   recommended={this.state.recommended}
                   onDelete={this.handleDelete}
                   onEdit={this.handleEdit}
+                  onUpdate={this.handleUpdate}
                   history={history}
                 />
               )}

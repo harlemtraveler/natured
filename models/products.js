@@ -61,19 +61,19 @@ function deleteProduct(id) {
   return query;
 }
 
-function updateProducts(products) {
+function updateProduct(product) {
   const query = db.one(`
     UPDATE products
-    SET user_id = $/user_id/, name = $/name/, description = $/description/, price = $/price/,
-    category_id = $/category_id/, stock = $/stock/
+    SET user_id = $/user_id/, name = $/name/, description = $/description/, price = $/price/, category_id = $/category_id/, stock = $/stock/
     WHERE id = $/id/
     RETURNING *`,
-    products );
+    product);
   return query;
 }
 
 module.exports = {
   getAllProducts,
   getRecommendedProducts,
-  getOneProduct
+  getOneProduct,
+  updateProduct
 }

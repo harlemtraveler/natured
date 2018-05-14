@@ -48,7 +48,11 @@ function Cart(props) {
         {cartItems}
       </div>
       <div className="right-cart">
-        <Total total={props.total}/>
+        <Total
+          total={props.total}
+          cartItems={props.cartItems}
+          onUpdate={props.onUpdate}
+        />
         <h3>Recommended Items:</h3>
         {recommendedItems}
       </div>
