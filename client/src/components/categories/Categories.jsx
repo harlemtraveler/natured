@@ -2,6 +2,7 @@ import React from 'react';
 import '../../App.css';
 import Category from './Category';
 import Banner from '../Banner';
+import Footer from '../Footer';
 
 function Categories(props) {
   const categories = props.categories.map(category => {
@@ -14,9 +15,8 @@ function Categories(props) {
     )
   });
 
+
   return (
-    // each category image will be mapped through to create a individual flex items that link to all products
-    // for that specific category
     <div>
       <div className="flex-container">
         <Banner
@@ -25,6 +25,7 @@ function Categories(props) {
         />
         {categories}
       </div>
+      <Footer/>
     </div>
   );
 }

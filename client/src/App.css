@@ -15,6 +15,24 @@ button {
   outline: none;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+/*  border: 1px solid #000000;*/
+  color: black;
+  text-transform: uppercase;
+  display: inline-block;
+/*  margin-top: 50%;*/
+}
+
+.footer ul {
+  list-style-type: none;
+}
+
+
 .viewmore:hover,
 .product-info button:hover,
 .cart button:hover,
