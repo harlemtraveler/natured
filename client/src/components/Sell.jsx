@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ProfileSideMenu from './profile/ProfileSideMenu';
-import ProfileInformationCardForm from './profile/ProfileInformationCardForm';
+import ProductDashboard from './profile/ProductDashboard';
 
 class Sell extends Component {
   render() {
@@ -12,7 +12,7 @@ class Sell extends Component {
 
         <div className="seller-info">
           <div>
-            <ProfileInformationCardForm />
+            <ProductDashboard />
           </div>
         </div>
       </div>
