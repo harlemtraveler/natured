@@ -201,11 +201,22 @@ class App extends Component {
     return this.state.categories[index];
   }
 
+  getQuote() {
+    const url = `http://quotes.rest/qod.json?category=inspire`;
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+      console.log(data.contents.quotes[0].quote)
+      return data.contents
+    })
+  }
+
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
     this.updateCart();
     this.fetchRecommended();
+    this.getQuote();
   }
 
   render() {
