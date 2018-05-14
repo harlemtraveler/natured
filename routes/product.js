@@ -10,6 +10,13 @@ router.route('/')
     responseController.sendError
   )
 
+router.route('/recommended')
+  .get(
+    productsController.getRecommendedProducts,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+
 router.route('/:id')
   .get(
     productsController.getOneProduct,
