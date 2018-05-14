@@ -1,22 +1,10 @@
 import React from 'react';
-import {grey900} from 'material-ui/styles/colors';
-import {fullWhite} from 'material-ui/styles/colors';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import '../../App.css';
 import Category from './Category';
 import Banner from '../Banner';
+import Footer from '../Footer';
 
 function Categories(props) {
-  const muiTheme = getMuiTheme ({
-    palette: {
-      textColor: grey900
-    },
-    appBar: {
-      height: 125,
-      color: fullWhite
-    }
-  });
 
   const categories = props.categories.map(category => {
     return (
@@ -28,10 +16,9 @@ function Categories(props) {
     )
   });
 
+
   return (
-    // each category image will be mapped through to create a individual flex items that link to all products
-    // for that specific category
-    <MuiThemeProvider muiTheme={muiTheme}>
+
       <div>
         <div className="flex-container">
           <Banner
@@ -40,8 +27,9 @@ function Categories(props) {
           />
           {categories}
         </div>
+        <Footer/>
       </div>
-    </MuiThemeProvider>
+
   );
 }
 
