@@ -170,6 +170,7 @@ class App extends Component {
     })
     .then(() => {
       this.deleteFromCart(product.id);
+      this.fetchProducts();
       this.fetchRecommended();
     })
   }

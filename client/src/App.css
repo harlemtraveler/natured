@@ -312,6 +312,20 @@ a:active {
   justify-content: space-between;
 }
 
+/* Profile */
+
+.profile-container {
+  display: flex;
+}
+
+.side-menu {
+  width: 300px;
+}
+
+.seller-info {
+  width: calc(100% - 300px);
+}
+
 /* Media queries */
 
 @media screen and (max-width: 942px) {
