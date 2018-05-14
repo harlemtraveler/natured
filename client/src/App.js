@@ -52,9 +52,20 @@ class App extends Component {
     return this.state.categories[index];
   }
 
+   getQuote() {
+    const url = `http://quotes.rest/qod.json?category=inspire`
+    fetch(url)
+    .then((resp) => resp.json())
+    .then(function(data) {
+      console.log(data.contents.quotes[0].quote)
+      return data.contents
+    })
+  }
+
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
+    this.getQuote();
   }
 
   render() {
@@ -73,7 +84,7 @@ class App extends Component {
           <Route exact path="/login" render={() => (<Login/>)} />
           <Route exact path="/register" render={() => (<Register/>)} />
           <Route exact path="/FAQ" render={() => (<FAQ/>)} />
-          <Route exact path="/sell" render={() => (<Sell/>)} />  
+          <Route exact path="/sell" render={() => (<Sell/>)} />
         </div>
       </Router>
     );
