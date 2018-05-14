@@ -5,7 +5,7 @@ import Product from './Product';
 function Products(props) {
   let products;
 
-  if(props.category) {
+  if(props.products && props.category) {
     products = props.products.filter(
       prod => prod.category_id === props.category.id)
     .map(product => {
@@ -13,10 +13,20 @@ function Products(props) {
         <Product
           key={product.id}
           product={product}
-          category={props.category}
+          category={product.category}
         />
       )
     });
+  } else if(props.viewAll && props.category) {
+    products = props.viewAll.map(product => {
+      return (
+        <Product
+          key={product.id}
+          product={product}
+          category={product.category}
+        />
+      )})
+
   }
 
   return (

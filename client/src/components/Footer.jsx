@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
  function Footer(props) {
-
-
    function getQuote() {
       const url = `http://quotes.rest/qod.json?category=inspire`;
       fetch(url)
