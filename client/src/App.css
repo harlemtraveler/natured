@@ -103,6 +103,11 @@ button {
   margin: 0;
 }
 
+/* About page */
+.about {
+  padding: 100px;
+}
+
 .flex-item {
   box-sizing: border-box;
   padding: 10px;

@@ -25,7 +25,6 @@ function Categories(props) {
         />
         {categories}
       </div>
-      <Footer/>
     </div>
   );
 }

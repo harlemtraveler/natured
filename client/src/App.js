@@ -11,6 +11,7 @@ import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
 import Products from './components/products/Products';
 import ProductsView from './components/products/ProductsView';
+import Footer from './components/Footer'
 
 class App extends Component {
   constructor(props) {
@@ -283,6 +284,7 @@ class App extends Component {
               )}
             />
             <Route path="/sell" render={() => (<Sell/>)} />
+            <Route path="/:id" render={() => (<Footer/>)} />
           </main>
         </div>
       </Router>
