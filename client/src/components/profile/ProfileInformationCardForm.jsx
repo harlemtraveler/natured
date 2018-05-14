@@ -13,6 +13,7 @@ class ProfileInformationCardForm extends Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -21,75 +22,87 @@ class ProfileInformationCardForm extends Component {
     })
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log('submit user form');
+    console.log(this.state);
+
+  }
+
   render() {
     return(
-      <form>
-        <div className="field">
-          <label htmlFor="name">Name</label>
-          <div>
-            <input
-              type="text"
-              value={this.state.name}
-              name="name"
-              id="name"
-              onChange={this.handleChange}
-            />
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label htmlFor="name">Name</label>
+            <div>
+              <input
+                required
+                type="text"
+                value={this.state.name}
+                name="name"
+                id="name"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <div>
-            <input
-              type="email"
-              value={this.state.email}
-              name="email"
-              id="email"
-              onChange={this.handleChange}
-            />
+          <div className="field">
+            <label htmlFor="email">Email</label>
+            <div>
+              <input
+                required
+                type="email"
+                value={this.state.email}
+                name="email"
+                id="email"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label htmlFor="password">Current Password</label>
-          <div>
-            <input
-              type="password"
-              value={this.state.password}
-              name="password"
-              id="password"
-              onChange={this.handleChange}
-            />
+          <div className="field">
+            <label htmlFor="password">Current Password</label>
+            <div>
+              <input
+                required
+                type="password"
+                value={this.state.password}
+                name="password"
+                id="password"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label htmlFor="newPass">New Password</label>
-          <p className="warning">Note: Leave blank if you don't want to change your current password</p>
-          <div>
-            <input
-              type="password"
-              value={this.state.newPass}
-              name="newPass"
-              id="newPass"
-              onChange={this.handleChange}
-            />
+          <div className="field">
+            <label htmlFor="newPass">New Password</label>
+            <p className="warning">Note: Leave blank if you don't want to change your current password</p>
+            <div>
+              <input
+                type="password"
+                value={this.state.newPass}
+                name="newPass"
+                id="newPass"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="field">
-          <label htmlFor="img_url">Image URL</label>
-          <div>
-            <input
-              type="text"
-              value={this.state.img_url}
-              name="img_url"
-              id="img_url"
-              onChange={this.handleChange}
-            />
+          <div className="field">
+            <label htmlFor="img_url">Image URL</label>
+            <div>
+              <input
+                type="text"
+                value={this.state.img_url}
+                name="img_url"
+                id="img_url"
+                onChange={this.handleChange}
+              />
+            </div>
           </div>
-        </div>
-        <div className="button-container">
-          <button className="links">Save</button>
-          <Link to="/sell" className="links">Cancel</Link>
-        </div>
-      </form>
+          <div className="button-container">
+            <button className="links" value="submit">Save</button>
+            <Link to="/sell" className="links">Cancel</Link>
+          </div>
+        </form>
+      </div>
     )
   }
 }

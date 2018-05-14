@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
  function Footer(props) {
   return (
-  <div class="footer nav">
-  <div class="wrapper">
+  <div className="footer nav">
+  <div className="wrapper">
         <ul>
           <li>About Us</li>
           <li>Contact Us</li>
