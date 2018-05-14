@@ -6,14 +6,8 @@ class ProfileSideMenu extends Component {
   render() {
     return(
       <div className="profile-side-menu-container">
-          <ProfilePicture />
-          <EditableProfileInformationCard
-            isOpen={true}
-          />
-          <div className="button-container">
-            <button>Edit</button>
-            <button>Cancel</button>
-          </div>
+        <ProfilePicture />
+        <EditableProfileInformationCard />
       </div>
     );
   }
