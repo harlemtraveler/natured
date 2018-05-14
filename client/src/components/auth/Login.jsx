@@ -1,62 +1,57 @@
-import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import React, { Component } from 'react';
 
-
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      email: "",
-      password: ""
+      email: '',
+      password: ''
     };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  validateForm() {
-    return this.state.email.length > 4 && this.state.password.length > 4;
-  }
-
-  handleChange = event => {
+  handleInputChange(e) {
+    const { name, value } = e.target;
     this.setState({
-      [event.target.id]: event.target.value
+      [name]: value
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.setState({
+      email: '',
+      password: ''
+    });
   }
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
-            <FormControl
-              autoFocus
-              type="email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
-              value={this.state.password}
-              onChange={this.handleChange}
-              type="password"
-            />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
-        </form>
-      </div>
-    );
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Email:
+          <input
+            type='text'
+            onChange={this.handleInputChange}
+            value={this.state.email}
+            name='email'
+          />
+        </label>
+        <label>
+          Password:
+          <input
+            type='password'
+            onChange={this.handleInputChange}
+            value={this.state.password}
+            name='password'
+          />
+        </label>
+        <button type='submit'>Login</button>
+      </form>
+    )
   }
 }
+
+export default Login;
