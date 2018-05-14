@@ -124,6 +124,12 @@ a:active {
   margin-top: 40px;
 }
 
+.header-category {
+  color: white;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, .5);
+}
+
 .nav {
   text-align: center;
   box-shadow: 1px 1px 10px rgb(34,34,34);

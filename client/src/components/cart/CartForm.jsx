@@ -7,7 +7,7 @@ class CartForm extends Component {
     this.state = {
       edited: {
         id: this.props.product.id,
-        quantity: '1'
+        quantity: '0'
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);

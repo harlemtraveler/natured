@@ -6,6 +6,7 @@ function getAllProducts(){
     FROM products
     JOIN categories
     ON products.category_id = categories.id
+    WHERE stock > 0
     `);
   return queryPromise;
 }
@@ -16,6 +17,7 @@ function getRecommendedProducts(){
     FROM products
     JOIN categories
     ON products.category_id = categories.id
+    WHERE stock > 0
     ORDER BY RANDOM()
     LIMIT 4
     `);
