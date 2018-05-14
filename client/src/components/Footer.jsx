@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
- function Footer(props) {
+class Footer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    quote: ""
+  }
 
+    this.getQuote = this.getQuote.bind(this);
+  }
 
-   function getQuote() {
+ getQuote() {
       const url = `http://quotes.rest/qod.json?category=inspire`;
       fetch(url)
       .then((resp) => resp.json())
-      .then(function(data) {
+      .then(data => {
       console.log(data.contents.quotes[0].quote)
-      return data.contents
+      this.setState({
+        quote: data.contents.quotes[0].quote
+      })
     })
   }
 
-  function componentDidMount() {
+  componentDidMount() {
     this.getQuote();
   }
-
+render () {
 return (
-  <div className="footer nav">.jsx
+  <div className="footer nav">
+  <p>{this.state.quote}</p>
   <div className="wrapper">
         <ul>
            <li><a href="/about">About</a></li>
@@ -33,11 +43,11 @@ return (
           <ul>
           <li className="nav-right space-right"><a href="/categories">WORK FOR US</a></li>
           <li className="nav-right"><a href="/sell">FAQ</a></li>
-          <p>{getQuote()}</p>
         </ul>
           </div>
       </div>
       )
   }
+}
 
 export default Footer;
