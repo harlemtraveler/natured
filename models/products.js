@@ -10,6 +10,18 @@ function getAllProducts(){
   return queryPromise;
 }
 
+function getRecommendedProducts(){
+  const queryPromise = db.any(`
+    SELECT products.id, user_id, name, description, price, categories.category, stock, products.img_url
+    FROM products
+    JOIN categories
+    ON products.category_id = categories.id
+    ORDER BY RANDOM()
+    LIMIT 4
+    `);
+  return queryPromise;
+}
+
 function getUserProducts(){
   const queryPromise = db.any(`
     SELECT user_id, name, description, price, category_id, stock
@@ -62,5 +74,6 @@ function updateProducts(products) {
 
 module.exports = {
   getAllProducts,
+  getRecommendedProducts,
   getOneProduct
 }

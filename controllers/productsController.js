@@ -2,7 +2,6 @@ const productsDb = require('../models/products');
 
 
 function getAllProducts(req, res, next) {
-  console.log('getting products');
   productsDb.getAllProducts()
   .then(data => {
     res.locals.contents = data;
@@ -13,7 +12,16 @@ function getAllProducts(req, res, next) {
   })
 }
 
-
+function getRecommendedProducts(req, res, next) {
+  productsDb.getRecommendedProducts()
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    next(err);
+  })
+}
 
 
 function getOneProduct(req, res, next) {
@@ -29,5 +37,6 @@ function getOneProduct(req, res, next) {
 
 module.exports = {
   getAllProducts,
+  getRecommendedProducts,
   getOneProduct
 }

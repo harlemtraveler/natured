@@ -22,7 +22,7 @@ function Categories(props) {
     return (
       <Category
         key={category.id}
-        category={category.categories}
+        category={category.category}
         image={category.img_url}
       />
     )

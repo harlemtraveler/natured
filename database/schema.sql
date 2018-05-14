@@ -15,7 +15,7 @@ CREATE TABLE users (
 
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY,
-  categories VARCHAR(255),
+  category VARCHAR(255),
   img_url TEXT NOT NULL
 );
 

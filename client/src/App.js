@@ -21,6 +21,7 @@ class App extends Component {
       products: [],
       cart: [],
       total: 0,
+      recommended: [],
       user: {
         id: 1
       }
@@ -86,6 +87,19 @@ class App extends Component {
     })
   }
 
+  fetchRecommended() {
+    fetch('/api/products/recommended')
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        recommended: respBody.contents
+     })
+    });
+  }
+
   addToCart(info) {
     const options = {
       method: 'POST',
@@ -100,7 +114,7 @@ class App extends Component {
       if(!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
-    .then(() => {
+    .then(respBody => {
       this.updateCart();
     })
   }
@@ -156,7 +170,7 @@ class App extends Component {
   }
 
   selectCategory(category) {
-    const index = this.state.categories.findIndex(aCategory => aCategory.categories.toLocaleLowerCase() === category);
+    const index = this.state.categories.findIndex(aCategory => aCategory.category.toLocaleLowerCase() === category);
     return this.state.categories[index];
   }
 
@@ -164,6 +178,7 @@ class App extends Component {
     this.fetchProducts();
     this.fetchCategories();
     this.updateCart();
+    this.fetchRecommended();
   }
 
   render() {
@@ -214,6 +229,7 @@ class App extends Component {
                 <Cart
                   cartItems={this.state.cart}
                   total={this.state.total}
+                  recommended={this.state.recommended}
                   onDelete={this.handleDelete}
                   onEdit={this.handleEdit}
                   history={history}

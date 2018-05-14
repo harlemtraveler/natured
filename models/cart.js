@@ -7,6 +7,7 @@ function getCartItems(user_id) {
     JOIN cart c
     ON p.id = c.product_id
     WHERE c.user_id = $1
+    ORDER BY c.id
   `, user_id);
 }
 
