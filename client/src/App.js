@@ -8,12 +8,6 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Apply from './Apply';
 import Login from './components/auth/Login';
-import {
-   getQuotes,
-   createQuote,
-   deleteQuote,
-  updateQuote,
- } from './services/apiService';
 import Register from './components/auth/Register';
 import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
@@ -42,9 +36,6 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-
-    this.handleLogin = this.handleLogin.bind(this);
-
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -240,8 +231,6 @@ class App extends Component {
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
-    //this.updateCart();
-
     this.fetchRecommended();
     if(this.state.user) {
       this.updateCart();
@@ -250,8 +239,8 @@ class App extends Component {
 
   render() {
     return (
-    /*each category image will be mapped through to create a individual flex items that link to all products
-    for that specific category*/
+    // each category image will be mapped through to create a individual flex items that link to all products
+    // for that specific category
       <Router>
         <div>
           <main>

@@ -176,29 +176,4 @@ Time frames are also key in the development cycle.  You have limited time to cod
 
     - A collection of 60000+ Quotes with hundreds of different categories. Able to generate a random quote based on categories.
 
-## How to install the app in your local machine.
-    First you have to create a github account. 
-    
-    Then go to the github account that holds this repo. Currently genkjames.
-    
-    After that click on the fork button on the top right corner. Then click on your account.
-    
-    Similarly, the next step is to clone the repo. This is done by clickig on the green button label 'clone or download'. Coppy the url.
-    
-    After that, write this in your terminal (Your terminal can be oppened by serching 'terminal' of finder and clicking on it) 'git clone "url that was coppied" ' hit enter. 
-
-    Open the aplication in your text editor for code. If you have sublime installed you can write 'subl natured' in your terminal. Sublime can be installed from their website https://www.sublimetext.com/.
-
-    Go into natured by writing 'cd natured' your terminal. 
-
-    In your text editor run this command 'npm install'. The next step is to install your dependencies by writing into your terminal 'npm i bycrypt, body-parser, dotenv, express, jsonwebtoken, morgan, pg-promise, react-apollo, react-router, react-router-dom'. 
-
-    the next step is to go into the clinet directory. Do this by writing 'cd client'. The next step is to write this in your terminal 'npm i'.
-
-    After this you need to install your dependencies in react. Do this by writing 'npm i jwt-decade, material-ui, nodemon, react, react-dom, react-router-dom, react-scripts, react-typed'.
-
-    We are ready to run the app. Write 'nom run dev' in your terminal. 
-
-
-
 
