@@ -227,10 +227,8 @@ class App extends Component {
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
-<<<<<<< HEAD
     //this.updateCart();
-=======
->>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
+
     this.fetchRecommended();
     if(this.state.user) {
       this.updateCart();
