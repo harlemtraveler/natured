@@ -248,6 +248,13 @@ class App extends Component {
                   />
                 )} />
             </Switch>
+            <Route path="/all" render={({ match }) => (
+              <Products
+                match={ match }
+                viewAll={this.state.products}
+                category={this.state.categories}
+              />)}
+            />
             <Route path="/about" render={() => (<About/>)} />
             <Route path="/login" render={() => (<Login/>)} />
             <Route path="/register" render={() => (<Register/>)} />
