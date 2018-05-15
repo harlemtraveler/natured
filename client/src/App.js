@@ -6,14 +6,13 @@ import Nav from './components/Nav';
 import Categories from './components/categories/Categories';
 import About from './components/About';
 import Login from './components/auth/Login';
-/*import {
+import {
    getQuotes,
    createQuote,
    deleteQuote,
--  updateQuote
-+  updateQuote,
-+  login
- } from './services/apiService';*/
+  updateQuote,
+  login
+ } from './services/apiService';
 import Register from './components/auth/Register';
 import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
@@ -37,7 +36,7 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-   // this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
   }
 
   fetchProducts() {
@@ -66,7 +65,7 @@ class App extends Component {
     });
   }
 
-  /*fetchCartItems() {
+  fetchCartItems() {
     fetch(`/api/cart/${this.state.user.id}`)
     .then(resp => {
       if(!resp.ok) throw new Error('There was an error');
@@ -77,7 +76,7 @@ class App extends Component {
         cart: data.contents
       })
     })
-  }*/
+  }
 
   fetchOrderTotal() {
     fetch(`/api/cart/total/${this.state.user.id}`)
@@ -96,7 +95,7 @@ class App extends Component {
     })
   }
 
-  /*fetchRecommended() {
+  fetchRecommended() {
     fetch('/api/products/recommended')
     .then(resp => {
       if (!resp.ok) throw new Error('There was an error');
@@ -107,7 +106,7 @@ class App extends Component {
         recommended: respBody.contents
      })
     });
-  }*/
+  }
 
   addToCart(info) {
     const options = {
@@ -161,10 +160,10 @@ class App extends Component {
     })
   }
 
-  /*updateCart() {
+  updateCart() {
     this.fetchCartItems();
     this.fetchOrderTotal();
-  }*/
+  }
 
   handleSubmit(info) {
     this.addToCart(info);
@@ -183,17 +182,17 @@ class App extends Component {
     return this.state.categories[index];
   }
 
-  /*componentDidMount() {
+  componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
     //this.updateCart();
     this.fetchRecommended();
-  }*/
+  }
 
   render() {
     return (
-    // each category image will be mapped through to create a individual flex items that link to all products
-    // for that specific category
+    /*each category image will be mapped through to create a individual flex items that link to all products
+    for that specific category*/
       <Router>
         <div>
           <main>
