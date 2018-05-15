@@ -11,7 +11,6 @@ import {
    createQuote,
    deleteQuote,
   updateQuote,
-  login
  } from './services/apiService';
 import Register from './components/auth/Register';
 import Cart from './components/cart/Cart';
@@ -36,13 +35,12 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-<<<<<<< HEAD
+
     this.handleLogin = this.handleLogin.bind(this);
-=======
+
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
->>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
   }
 
   fetchProducts() {
