@@ -32,6 +32,9 @@ button {
   list-style-type: none;
 }
 
+.quote-padding {
+  padding: 20px;
+}
 
 .viewmore:hover,
 .product-info button:hover,
@@ -103,9 +106,11 @@ button {
   margin: 0;
 }
 
-/* About page */
-.about {
+
+.menu-links-padding {
   padding: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
 }
 
 .flex-item {

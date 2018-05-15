@@ -5,6 +5,8 @@ import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Categories from './components/categories/Categories';
 import About from './components/About';
+import Contact from './components/Contact';
+import Apply from './Apply';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Cart from './components/cart/Cart';
@@ -262,13 +264,15 @@ class App extends Component {
                 )} />
             </Switch>
             <Route path="/all" render={({ match }) => (
-              <Products
+                <Products
                 match={ match }
                 viewAll={this.state.products}
                 category={this.state.categories}
               />)}
             />
             <Route path="/about" render={() => (<About/>)} />
+            <Route path="/contact" render={() => (<Contact/>)} />
+            <Route path="/apply" render={() => (<Apply/>)} />
             <Route path="/login" render={({ history }) => (
               <Login
                 history={history}

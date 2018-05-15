@@ -3,7 +3,7 @@ import '../App.css';
 
 function About (props) {
   return(
-    <div className="about">
+    <div className="menu-links-padding">
     <h1>Nature'd Mission Statement</h1>
     <p>Build the best product, cause no unecessary harm, and use business to inspire and implement
     solutions to the environmental crisis</p>
@@ -13,7 +13,8 @@ function About (props) {
       business to include clothing and gear for fishing, hiking, skydiving, running and camping.
       Staying true to our core values during thirty-plus years in business has helped us create a company we're proud to run and work for.
       We pledge to always deliver on the highest quality sports gear available on the market. </p>
-    </div>
+    <h1>Credit to <a href="www.patagonia.com">Patagonia</a> for inspiring our philosphy :)</h1>
+   </div>
   )
 }
 
