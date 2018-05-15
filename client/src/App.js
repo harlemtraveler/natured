@@ -26,7 +26,12 @@ class App extends Component {
       cart: [],
       total: 0,
       recommended: [],
-      user: null
+      user: {
+        email: "testing@g.com",
+        iat: 1526396691,
+        id: 1,
+        username: "bcoleman"
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
