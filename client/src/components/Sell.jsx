@@ -16,17 +16,22 @@ class Sell extends Component {
   render() {
     return(
       <div>
-        <div className="profile-container">
-          <div className="side-menu">
-            <ProfileSideMenu user={this.props.user}/>
-          </div>
+        {this.props.user &&
+          <div className="profile-container">
+            <div className="side-menu">
+              <ProfileSideMenu
+                user={this.props.user}
+                onSubmit={this.props.onSubmit}
+              />
+            </div>
 
-          <div className="seller-info">
-            <div>
-              <ProductDashboard />
+            <div className="seller-info">
+              <div>
+                <ProductDashboard />
+              </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     )
   }

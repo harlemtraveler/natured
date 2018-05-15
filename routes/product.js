@@ -9,6 +9,11 @@ router.route('/')
     responseController.sendStatus,
     responseController.sendError
   )
+  .post(
+    productsController.createProduct,
+    responseController.sendStatus,
+    responseController.sendError
+  )
 
 router.route('/recommended')
   .get(
@@ -20,6 +25,16 @@ router.route('/recommended')
 router.route('/:id')
   .get(
     productsController.getOneProduct,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+  .put(
+    productsController.updateProduct,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+  .delete(
+    productsController.deleteProduct,
     responseController.sendStatus,
     responseController.sendError
   )

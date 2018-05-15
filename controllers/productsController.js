@@ -23,9 +23,42 @@ function getRecommendedProducts(req, res, next) {
   })
 }
 
-
 function getOneProduct(req, res, next) {
   productsDb.getOneProduct(req.params.id)
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    next(err);
+  })
+}
+
+function createProduct(req, res, next) {
+  productsDb.createProduct(req.body)
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    next(err);
+  })
+}
+
+function updateProduct(req, res, next) {
+  req.body.id = req.params.id;
+  productsDb.updateProduct(req.body)
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    next(err);
+  })
+}
+
+function deleteProduct(req, res, next) {
+  productsDb.deleteProduct(req.params.id)
   .then(data => {
     res.locals.contents = data;
     next();
@@ -38,5 +71,8 @@ function getOneProduct(req, res, next) {
 module.exports = {
   getAllProducts,
   getRecommendedProducts,
-  getOneProduct
+  getOneProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct
 }

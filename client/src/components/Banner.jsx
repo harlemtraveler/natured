@@ -8,7 +8,7 @@ function Banner(props) {
       <div className="feature-text"><h1>{props.text}</h1></div>
     </div>
     <Link to="/all">
-      <div className="all-products">See all products</div>
+      <div className="all-products">Browse all products</div>
     </Link>
     </div>
   )

@@ -23,8 +23,7 @@ class ProfileInformationCardForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log('submit user form');
-    console.log(this.state);
+    this.props.onSubmit(this.state);
   }
 
   componentDidMount() {
@@ -73,19 +72,6 @@ class ProfileInformationCardForm extends Component {
                 value={this.state.password}
                 name="password"
                 id="password"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label htmlFor="newPass">New Password</label>
-            <p className="warning">Note: Leave blank if you don't want to change your current password</p>
-            <div>
-              <input
-                type="password"
-                value={this.state.newPass}
-                name="newPass"
-                id="newPass"
                 onChange={this.handleChange}
               />
             </div>

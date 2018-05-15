@@ -46,27 +46,35 @@ function getOneProduct(id) {
   return queryPromise;
 }
 
-function createProduct(products) {
+function createProduct(product) {
+  if(product.img_url === '') {
+    product.img_url = 'https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg';
+  }
   const query = db.one(`
     INSERT INTO products
-    (user_id,name,description,price,category_id,stock)
-    VALUES ($/user_id/, $/name/, $/description/, $/price/,$/category_id/,$/stock/)
+    (user_id, name, description, price, category_id, stock, img_url, state_id)
+    VALUES ($/user_id/, $/name/, $/description/, $/price/,$/category_id/,$/stock/, $/img_url/, $/state_id/)
     RETURNING *`,
-    products);
+    product);
   return query;
 }
 
 function deleteProduct(id) {
   const query = db.none(`
     DELETE FROM products
-    WHERE id = $1`, id);
+    WHERE id = $1
+  `, id);
   return query;
 }
 
 function updateProduct(product) {
+  if(product.img_url === '') {
+    product.img_url = 'https://upload.wikimedia.org/wikipedia/commons/3/36/Hopetoun_falls.jpg';
+  }
   const query = db.one(`
     UPDATE products
-    SET user_id = $/user_id/, name = $/name/, description = $/description/, price = $/price/, category_id = $/category_id/, stock = $/stock/
+    SET name = $/name/, description = $/description/, price = $/price/, category_id = $/category_id/, stock = $/stock/,
+      img_url = $/img_url/, state_id = $/state_id/
     WHERE id = $/id/
     RETURNING *`,
     product);
@@ -77,5 +85,7 @@ module.exports = {
   getAllProducts,
   getRecommendedProducts,
   getOneProduct,
-  updateProduct
+  createProduct,
+  updateProduct,
+  deleteProduct
 }
