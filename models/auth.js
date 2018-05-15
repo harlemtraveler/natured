@@ -36,7 +36,24 @@ function login(creds) {
   ));
 }
 
+function updateUser(creds) {
+  return findEmail(creds.email)
+  .then(user => (
+    bcrypt.compare(creds.password, user.password_digest)
+    .then(match => {
+      if (!match) throw new Error('Email or password is incorrect');
+      return db.one(`
+        UPDATE users
+        SET username = $/name/, email = $/email/
+        WHERE id = $/id/
+        RETURNING id, username, email
+      `);
+    })
+  ));
+}
+
 module.exports = {
   register,
-  login
+  login,
+  updateUser
 }

@@ -14,6 +14,7 @@ class EditableProfileInformationCard extends Component {
             <ProfileInformationCardForm
               name={this.props.user.username}
               email={this.props.user.email}
+              onSubmit={this.props.onSubmit}
             />
           )}
         />

@@ -10,5 +10,6 @@ router.route('/').get(
   )
 router.route('/register').post(authController.register)
 router.route('/login').post(authController.login)
+router.route('/update').post(authController.updateUser)
 
 module.exports = router;
