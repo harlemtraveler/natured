@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import '../../App.css';
+import Banner from '../Banner';
 
 export default class Signup extends Component {
   constructor(props) {
@@ -31,6 +33,14 @@ export default class Signup extends Component {
 
   render() {
     return (
+      <div className="flex-container">
+        <Banner
+          image="https://images.unsplash.com/photo-1523977761705-9893a1663a93?ixlib=rb-0.3.5&s=be6bd1164454bdcfeae5f4cd499ac90c&auto=format&fit=crop&w=2550&q=80"
+          text="Register"
+        />
+      <div className="login menu-links-padding">
+      <h1>Register</h1>
+      <p>Already have an account? Please click <a href="/register">here to login instead.</a></p>
       <form onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>
@@ -43,6 +53,7 @@ export default class Signup extends Component {
             id="username"
           />
         </div>
+        <br/>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -54,6 +65,7 @@ export default class Signup extends Component {
             id="email"
           />
         </div>
+        <br/>
         <div>
           <label htmlFor="password">Password</label>
           <input
@@ -65,8 +77,12 @@ export default class Signup extends Component {
             id="password"
           />
         </div>
+        <br/>
+        <br/>
         <button>Register</button>
       </form>
+      </div>
+      </div>
     )
   }
 }

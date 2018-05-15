@@ -6,6 +6,7 @@ import Nav from './components/Nav';
 import Categories from './components/categories/Categories';
 import About from './components/About';
 import Contact from './components/Contact';
+import FAQ from './components/FAQ';
 import Apply from './Apply';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
@@ -285,6 +286,7 @@ class App extends Component {
             />
             <Route path="/about" render={() => (<About/>)} />
             <Route path="/contact" render={() => (<Contact/>)} />
+            <Route path="/faq" render={() => (<FAQ/>)} />
             <Route path="/apply" render={() => (<Apply/>)} />
             <Route path="/login" render={({ history }) => (
               <Login
