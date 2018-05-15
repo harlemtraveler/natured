@@ -53,6 +53,7 @@ export default class Signup extends Component {
             id="username"
           />
         </div>
+        <br/>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -64,6 +65,7 @@ export default class Signup extends Component {
             id="email"
           />
         </div>
+        <br/>
         <div>
           <label htmlFor="password">Password</label>
           <input
@@ -75,6 +77,8 @@ export default class Signup extends Component {
             id="password"
           />
         </div>
+        <br/>
+        <br/>
         <button>Register</button>
       </form>
       </div>

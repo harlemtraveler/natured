@@ -42,6 +42,7 @@ export default class Login extends Component {
       <div className="login menu-links-padding">
       <h1>Login</h1>
       <p>Need to create a profile? Please click <a href="/register">here to register.</a></p>
+       <br/>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label>Email</label>
@@ -52,6 +53,7 @@ export default class Login extends Component {
               name="email"
             />
           </div>
+          <br/>
           <div>
             <label>Password</label>
             <input
@@ -61,6 +63,8 @@ export default class Login extends Component {
               name="password"
             />
           </div>
+          <br/>
+          <br/>
           <button type="submit">Login</button>
         </form>
       </div>
