@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../App.css';
+import Banner from '../Banner'
 import { Route, Switch } from 'react-router-dom';
 import CartItems from './CartItems';
 import Total from './Total';
@@ -42,6 +43,13 @@ function Cart(props) {
   })
 
   return (
+    <div>
+    <div className="flex-container">
+        <Banner
+          image="https://images.unsplash.com/photo-1448842215777-02928daa9d5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a7d075fc685e063a6e6777118cce522&auto=format&fit=crop&w=2464&q=80"
+          text="Shopping Cart"
+        />
+        </div>
     <div className="cart-container">
       <div className="left-cart">
         <h3>Shopping Cart:</h3>
@@ -55,8 +63,11 @@ function Cart(props) {
         />
         <h3>Recommended Items:</h3>
         {recommendedItems}
-      </div>
     </div>
+    </div>
+    </div>
+
+
   )
 }
 

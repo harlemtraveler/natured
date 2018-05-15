@@ -42,7 +42,7 @@ render () {
       </div>
       <ul>
         <li className="nav-right space-right"><Link to="/apply">WORK FOR US</Link></li>
-        <li className="nav-right"><Link to="/sell">FAQ</Link></li>
+        <li className="nav-right"><Link to="/faq">FAQ</Link></li>
       </ul>
     </div>
     </div>
