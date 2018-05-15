@@ -8,8 +8,7 @@ class ProfileInformationCardForm extends Component {
       name: '',
       email: '',
       password: '',
-      newPass: '',
-      img_url: ''
+      newPass: ''
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +25,13 @@ class ProfileInformationCardForm extends Component {
     e.preventDefault();
     console.log('submit user form');
     console.log(this.state);
+  }
 
+  componentDidMount() {
+    this.setState({
+      name: this.props.name,
+      email: this.props.email
+    })
   }
 
   render() {
@@ -81,18 +86,6 @@ class ProfileInformationCardForm extends Component {
                 value={this.state.newPass}
                 name="newPass"
                 id="newPass"
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="field">
-            <label htmlFor="img_url">Image URL</label>
-            <div>
-              <input
-                type="text"
-                value={this.state.img_url}
-                name="img_url"
-                id="img_url"
                 onChange={this.handleChange}
               />
             </div>

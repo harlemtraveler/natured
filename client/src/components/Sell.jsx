@@ -3,16 +3,28 @@ import ProfileSideMenu from './profile/ProfileSideMenu';
 import ProductDashboard from './profile/ProductDashboard';
 
 class Sell extends Component {
+  isLoggedIn() {
+    if(this.props.user === null) {
+      this.props.history.push('/login');
+    }
+  }
+
+  componentDidMount() {
+    this.isLoggedIn();
+  }
+
   render() {
     return(
-      <div className="profile-container">
-        <div className="side-menu">
-          <ProfileSideMenu />
-        </div>
+      <div>
+        <div className="profile-container">
+          <div className="side-menu">
+            <ProfileSideMenu user={this.props.user}/>
+          </div>
 
-        <div className="seller-info">
-          <div>
-            <ProductDashboard />
+          <div className="seller-info">
+            <div>
+              <ProductDashboard />
+            </div>
           </div>
         </div>
       </div>

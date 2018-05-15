@@ -8,8 +8,8 @@ function register(req, res) {
   }))
   .then(data => tokenService.makeToken({
     id: data.id,
+    username: data.username,
     email: data.email,
-    birthday: data.birthday
   }))
   .then(token => {
     res.json({
@@ -26,8 +26,8 @@ function login(req, res) {
   }))
   .then(data => tokenService.makeToken({
     id: data.id,
-    email: data.email,
-    birthday: data.birthday
+    username: data.username,
+    email: data.email
   }))
   .then(token => {
     res.json({

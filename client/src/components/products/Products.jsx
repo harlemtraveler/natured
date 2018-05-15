@@ -32,7 +32,7 @@ function Products(props) {
   return (
     <div>
       {props.category && <Banner
-        image={props.category.img_url}
+        image={props.category.img_url || 'https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80'}
         text={props.match.params.activity}
         />
       }

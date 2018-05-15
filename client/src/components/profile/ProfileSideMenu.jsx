@@ -7,7 +7,7 @@ class ProfileSideMenu extends Component {
     return(
       <div className="profile-side-menu-container">
         <ProfilePicture />
-        <EditableProfileInformationCard />
+        <EditableProfileInformationCard user={this.props.user}/>
       </div>
     );
   }
