@@ -3,7 +3,7 @@ import '../App.css';
 
 function About (props) {
   return(
-    <div class="about">
+    <div className="about">
     <h1>Nature'd Mission Statement</h1>
     <p>Build the best product, cause no unecessary harm, and use business to inspire and implement
     solutions to the environmental crisis</p>

@@ -11,7 +11,8 @@ import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
 import Products from './components/products/Products';
 import ProductsView from './components/products/ProductsView';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
+import { login, register } from './services/auth';
 
 class App extends Component {
   constructor(props) {
@@ -23,14 +24,14 @@ class App extends Component {
       cart: [],
       total: 0,
       recommended: [],
-      user: {
-        id: 1
-      }
+      user: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
   }
 
   fetchProducts() {
@@ -62,7 +63,7 @@ class App extends Component {
   fetchCartItems() {
     fetch(`/api/cart/${this.state.user.id}`)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(data => {
@@ -75,7 +76,7 @@ class App extends Component {
   fetchOrderTotal() {
     fetch(`/api/cart/total/${this.state.user.id}`)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(data => {
@@ -126,7 +127,7 @@ class App extends Component {
       method: 'DELETE'
     })
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(respBody => {
@@ -146,7 +147,7 @@ class App extends Component {
     fetch(`/api/cart/${this.state.user.id}/${info.product_id}`,
       options)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(respBody => {
@@ -166,7 +167,7 @@ class App extends Component {
     const productId = product.product_id;
     fetch(`/api/cart/${userId}/update/${productId}`, options)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(() => {
@@ -202,22 +203,23 @@ class App extends Component {
     return this.state.categories[index];
   }
 
-  getQuote() {
-    const url = `http://quotes.rest/qod.json?category=inspire`;
-    fetch(url)
-    .then((resp) => resp.json())
-    .then(function(data) {
-      console.log(data.contents.quotes[0].quote)
-      return data.contents
-    })
+  handleLogin(creds) {
+    login(creds)
+    .then(user => this.setState({user}))
+  }
+
+  handleRegister(creds) {
+    register(creds)
+    .then(user => this.setState({user}))
   }
 
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
-    this.updateCart();
     this.fetchRecommended();
-    this.getQuote();
+    if(this.state.user) {
+      this.updateCart();
+    }
   }
 
   render() {
@@ -253,7 +255,7 @@ class App extends Component {
                 path="/categories/:activity/:id"
                 render={({ match, history }) => (
                   <ProductsView
-                    match={ match }
+                    match={match}
                     onSubmit={this.handleSubmit}
                     history={history}
                   />
@@ -267,8 +269,18 @@ class App extends Component {
               />)}
             />
             <Route path="/about" render={() => (<About/>)} />
-            <Route path="/login" render={() => (<Login/>)} />
-            <Route path="/register" render={() => (<Register/>)} />
+            <Route path="/login" render={({ history }) => (
+              <Login
+                history={history}
+                onSubmit={this.handleLogin}
+              />)}
+            />
+            <Route path="/register" render={({ history }) => (
+              <Register
+                history={history}
+                onSubmit={this.handleRegister}
+              />)}
+            />
             <Route
               path="/cart"
               render={({ history }) => (
@@ -280,10 +292,16 @@ class App extends Component {
                   onEdit={this.handleEdit}
                   onUpdate={this.handleUpdate}
                   history={history}
+                  user={this.props.user}
                 />
               )}
             />
-            <Route path="/sell" render={() => (<Sell/>)} />
+            <Route path="/sell" render={({ history }) => (
+              <Sell
+                user={this.state.user}
+                history={history}
+              />)}
+            />
             <Route path="/:id" render={() => (<Footer/>)} />
           </main>
         </div>

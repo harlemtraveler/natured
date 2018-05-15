@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 
 export default class Login extends Component {
@@ -10,51 +9,50 @@ export default class Login extends Component {
       email: "",
       password: ""
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  validateForm() {
-    return this.state.email.length > 4 && this.state.password.length > 4;
-  }
-
-  handleChange = event => {
+  handleChange(e) {
     this.setState({
-      [event.target.id]: event.target.value
+      [e.target.name]: e.target.value
     });
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onSubmit(this.state);
+    this.setState({
+      email: '',
+      password: ''
+    })
+    this.props.history.push('/categories');
   }
 
   render() {
     return (
-      <div className="Login">
+      <div className="login">
         <form onSubmit={this.handleSubmit}>
-          <FormGroup controlId="email" bsSize="large">
-            <ControlLabel>Email</ControlLabel>
-            <FormControl
-              autoFocus
+          <div>
+            <label>Email</label>
+            <input
               type="email"
               value={this.state.email}
               onChange={this.handleChange}
+              name="email"
             />
-          </FormGroup>
-          <FormGroup controlId="password" bsSize="large">
-            <ControlLabel>Password</ControlLabel>
-            <FormControl
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
               value={this.state.password}
               onChange={this.handleChange}
-              type="password"
+              name="password"
             />
-          </FormGroup>
-          <Button
-            block
-            bsSize="large"
-            disabled={!this.validateForm()}
-            type="submit"
-          >
-            Login
-          </Button>
+          </div>
+          <button type="submit">Login</button>
         </form>
       </div>
     );

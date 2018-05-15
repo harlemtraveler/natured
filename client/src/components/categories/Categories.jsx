@@ -2,7 +2,6 @@ import React from 'react';
 import '../../App.css';
 import Category from './Category';
 import Banner from '../Banner';
-import Footer from '../Footer';
 
 function Categories(props) {
   const categories = props.categories.map(category => {

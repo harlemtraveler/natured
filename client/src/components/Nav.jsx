@@ -6,9 +6,9 @@ function Nav(props) {
     <div className="nav">
       <div className="wrapper">
         <ul>
-          <li><a href="/about">ABOUT</a></li>
-          <li><a href="/login">LOGIN</a></li>
-          <li><a href="/register">REGISTER</a></li>
+          <li><Link to="/about">ABOUT</Link></li>
+          <li><Link to="/login">LOGIN</Link></li>
+          <li><Link to="/register">REGISTER</Link></li>
         </ul>
         <div className="logo">
           <Link to="/categories">
@@ -16,9 +16,9 @@ function Nav(props) {
           </Link>
         </div>
         <ul>
-          <li className="nav-right space-right"><a href="/categories">SHOP</a></li>
-          <li className="nav-right"><a href="/sell">SELL</a></li>
-          <li className="nav-right"><a href="/cart">CART</a></li>
+          <li className="nav-right space-right"><Link to="/categories">SHOP</Link></li>
+          <li className="nav-right"><Link to="/sell">SELL</Link></li>
+          <li className="nav-right"><Link to="/cart">CART</Link></li>
         </ul>
       </div>
     </div>
