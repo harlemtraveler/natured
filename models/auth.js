@@ -5,14 +5,14 @@ function register(user) {
   return bcrypt.hash(user.password, parseInt(process.env.SALT))
   .then(hash => {
     const newUser = {
+      username: user.username,
       email: user.email,
-      password_digest: hash,
-      birthday: user.birthday
+      password_digest: hash
     };
     return db.one(`
-      INSERT INTO users (email, password_digest, birthday)
-      VALUES ($/email/, $/password_digest/, $/birthday/)
-      RETURNING id, email, birthday
+      INSERT INTO users (username, email, password_digest)
+      VALUES ($/username/ $/email/, $/password_digest/)
+      RETURNING id, username, email
     `, newUser);
   });
 }

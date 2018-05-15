@@ -3,14 +3,16 @@ import '../App.css';
 
 function About (props) {
   return(
-    <div>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-      reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-      mollit anim id est laborum."</p>
+    <div className="about">
+    <h1>Nature'd Mission Statement</h1>
+    <p>Build the best product, cause no unecessary harm, and use business to inspire and implement
+    solutions to the environmental crisis</p>
+      <h1>Our History</h1>
+      <p>Founded in 1987, Nature'd grew out of a small
+      company that made tools for climbers. In the mid-90's we grew our
+      business to include clothing and gear for fishing, hiking, skydiving, running and camping.
+      Staying true to our core values during thirty-plus years in business has helped us create a company we're proud to run and work for.
+      We pledge to always deliver on the highest quality sports gear available on the market. </p>
     </div>
   )
 }

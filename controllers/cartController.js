@@ -47,15 +47,23 @@ function editCart(req, res, next) {
 }
 
 function orderTotal(req, res, next) {
-  console.log(req.params.id);
   cartDb.orderTotal(req.params.id)
   .then(data => {
-    console.log(data);
     res.locals.contents = data;
     next();
   })
   .catch(err => {
-    console.log(err);
+    next(err);
+  })
+}
+
+function updateProductAfterCheckout(req, res, next) {
+  cartDb.updateProductAfterCheckout(req.body)
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
     next(err);
   })
 }
@@ -65,5 +73,6 @@ module.exports = {
   addToCart,
   deleteFromCart,
   editCart,
-  orderTotal
+  orderTotal,
+  updateProductAfterCheckout
 }

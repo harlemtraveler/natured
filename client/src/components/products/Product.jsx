@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Product(props) {
-  const category = props.category.category.toLocaleLowerCase();
+  const category = props.category.toLocaleLowerCase();
   const id = props.product.id;
   return (
     <div className="flex-item">

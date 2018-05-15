@@ -1,7 +1,7 @@
 INSERT INTO users
-  (email, password_digest, birthday)
+  (username, email, password_digest)
 VALUES
-  ('testing@g.co', '$2b$12$Ky51py24IUAjv0grl81GhOpoeQvBWWiMKTf06wMacmD/7kW5aPMUK', 'april');
+  ('gjames', 'testing@g.co', '$2b$12$Ky51py24IUAjv0grl81GhOpoeQvBWWiMKTf06wMacmD/7kW5aPMUK');
 
 INSERT INTO categories
   (category, img_url)

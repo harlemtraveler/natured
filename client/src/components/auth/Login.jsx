@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
+=======
+import React, { Component } from "react";
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
 
 class Login extends Component {
   constructor(props) {
@@ -7,6 +11,7 @@ class Login extends Component {
       email: '',
       password: ''
     };
+<<<<<<< HEAD
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -15,6 +20,16 @@ class Login extends Component {
     const { name, value } = e.target;
     this.setState({
       [name]: value
+=======
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
     });
   }
 
@@ -24,11 +39,17 @@ class Login extends Component {
     this.setState({
       email: '',
       password: ''
+<<<<<<< HEAD
     });
+=======
+    })
+    this.props.history.push('/categories');
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
   }
 
   render() {
     return (
+<<<<<<< HEAD
       <form onSubmit={this.handleSubmit}>
         <label>
           Email:
@@ -51,6 +72,32 @@ class Login extends Component {
         <button type='submit'>Login</button>
       </form>
     )
+=======
+      <div className="login">
+        <form onSubmit={this.handleSubmit}>
+          <div>
+            <label>Email</label>
+            <input
+              type="email"
+              value={this.state.email}
+              onChange={this.handleChange}
+              name="email"
+            />
+          </div>
+          <div>
+            <label>Password</label>
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              name="password"
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    );
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
   }
 }
 

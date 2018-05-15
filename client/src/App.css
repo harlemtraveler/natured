@@ -15,11 +15,34 @@ button {
   outline: none;
 }
 
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+/*  border: 1px solid #000000;*/
+  color: black;
+  text-transform: uppercase;
+  display: inline-block;
+/*  margin-top: 50%;*/
+}
+
+.footer ul {
+  list-style-type: none;
+}
+
+
 .viewmore:hover,
 .product-info button:hover,
 .cart button:hover,
 .cart a:hover,
 .total button:hover {
+  color: #89cf7a;
+  border: 1px solid #89cf7a;
+}
+
+.links:hover {
   color: #89cf7a;
   border: 1px solid #89cf7a;
 }
@@ -80,6 +103,11 @@ button {
   margin: 0;
 }
 
+/* About page */
+.about {
+  padding: 100px;
+}
+
 .flex-item {
   box-sizing: border-box;
   padding: 10px;
@@ -124,6 +152,12 @@ a:active {
   margin-top: 40px;
 }
 
+.header-category {
+  color: white;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, .5);
+}
+
 .nav {
   text-align: center;
   box-shadow: 1px 1px 10px rgb(34,34,34);
@@ -148,9 +182,12 @@ a:active {
 }
 
 /* Banner */
+.banner {
+  width: 100%;
+  margin-bottom: 100px;
+}
 
 .feature-header {
-  margin-bottom: 100px;
   width: 100%;
   height: 250px;
   background-size: cover;
@@ -170,6 +207,13 @@ a:active {
   opacity: 1;
   width: 200px;
   text-transform: uppercase;
+}
+
+.all-products {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 20px;
+  border-bottom: 1px solid #000;
 }
 
 /* Products */
@@ -304,6 +348,84 @@ a:active {
   padding: 5px 10px;
   display: flex;
   justify-content: space-between;
+}
+
+/* Profile */
+
+.profile-container {
+  display: flex;
+}
+
+.profile-container > * {
+  border: 1px solid #000;
+}
+
+.side-menu {
+  width: 300px;
+  text-align: center;
+  padding: 0 20px 40px;
+  box-sizing: border-box;
+}
+
+.portrait-container {
+  width: 180px;
+  height: 180px;
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 30px 30px 0;
+  background: #343;
+}
+
+.portrait {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  background: url('https://openclipart.org/image/2400px/svg_to_png/211821/matt-icons_preferences-desktop-personal.png');
+  background-size: cover;
+}
+
+.seller-info {
+  width: calc(100% - 300px);
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.profile-information-card-container > div, .field {
+  margin-bottom: 20px;
+}
+
+.profile-information-card-container > a {
+  border: 1px solid #000;
+  width: 150px;
+  margin: 50px auto 10px;
+  padding: 10px 15px;
+  display: block;
+}
+
+.field input {
+  width: 80%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.warning {
+  color: red;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.button-container {
+  margin: 30px 0 0;
+}
+
+.button-container > * {
+  border: 1px solid #000;
+  display: inline-block;
+  padding: 10px 0;
+  width: 40%;
+  margin: 3%;
 }
 
 /* Media queries */

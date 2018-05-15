@@ -24,4 +24,4 @@ function verify(token) {
 module.exports = {
   makeToken,
   verify
-}
+};

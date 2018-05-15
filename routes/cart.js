@@ -34,5 +34,12 @@ router.route('/:id/:productId')
     responseController.sendError
   )
 
+router.route('/:id/update/:productId')
+  .put(
+    cartController.updateProductAfterCheckout,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+
 module.exports = router;
 

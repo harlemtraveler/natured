@@ -18,6 +18,8 @@ import Cart from './components/cart/Cart';
 import Sell from './components/Sell';
 import Products from './components/products/Products';
 import ProductsView from './components/products/ProductsView';
+import Footer from './components/Footer';
+import { login, register } from './services/auth';
 
 class App extends Component {
   constructor(props) {
@@ -29,14 +31,18 @@ class App extends Component {
       cart: [],
       total: 0,
       recommended: [],
-      user: {
-        id: 1
-      }
+      user: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+<<<<<<< HEAD
     this.handleLogin = this.handleLogin.bind(this);
+=======
+    this.handleUpdate = this.handleUpdate.bind(this);
+    this.handleLogin = this.handleLogin.bind(this);
+    this.handleRegister = this.handleRegister.bind(this);
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
   }
 
   fetchProducts() {
@@ -68,7 +74,7 @@ class App extends Component {
   fetchCartItems() {
     fetch(`/api/cart/${this.state.user.id}`)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(data => {
@@ -81,7 +87,7 @@ class App extends Component {
   fetchOrderTotal() {
     fetch(`/api/cart/total/${this.state.user.id}`)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(data => {
@@ -132,7 +138,7 @@ class App extends Component {
       method: 'DELETE'
     })
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(respBody => {
@@ -152,11 +158,33 @@ class App extends Component {
     fetch(`/api/cart/${this.state.user.id}/${info.product_id}`,
       options)
     .then(resp => {
-      if(!resp.ok) throw new Error('There was an error');
+      if (!resp.ok) throw new Error('There was an error');
       return resp.json();
     })
     .then(respBody => {
       this.updateCart();
+    })
+  }
+
+  updateProductAfterCheckout(product) {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+    const userId = this.state.user.id;
+    const productId = product.product_id;
+    fetch(`/api/cart/${userId}/update/${productId}`, options)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(() => {
+      this.deleteFromCart(product.id);
+      this.fetchProducts();
+      this.fetchRecommended();
     })
   }
 
@@ -177,16 +205,36 @@ class App extends Component {
     this.editCart(info);
   }
 
+  handleUpdate(info) {
+    this.updateProductAfterCheckout(info);
+  }
+
   selectCategory(category) {
     const index = this.state.categories.findIndex(aCategory => aCategory.category.toLocaleLowerCase() === category);
     return this.state.categories[index];
   }
 
+  handleLogin(creds) {
+    login(creds)
+    .then(user => this.setState({user}))
+  }
+
+  handleRegister(creds) {
+    register(creds)
+    .then(user => this.setState({user}))
+  }
+
   componentDidMount() {
     this.fetchProducts();
     this.fetchCategories();
+<<<<<<< HEAD
     //this.updateCart();
+=======
+>>>>>>> ee894b0c0fb8dd8c8c28ee4c683e677d62e7f319
     this.fetchRecommended();
+    if(this.state.user) {
+      this.updateCart();
+    }
   }
 
   render() {
@@ -222,15 +270,32 @@ class App extends Component {
                 path="/categories/:activity/:id"
                 render={({ match, history }) => (
                   <ProductsView
-                    match={ match }
+                    match={match}
                     onSubmit={this.handleSubmit}
                     history={history}
                   />
                 )} />
             </Switch>
+            <Route path="/all" render={({ match }) => (
+              <Products
+                match={ match }
+                viewAll={this.state.products}
+                category={this.state.categories}
+              />)}
+            />
             <Route path="/about" render={() => (<About/>)} />
-            <Route path="/login" render={() => (<Login/>)} />
-            <Route path="/register" render={() => (<Register/>)} />
+            <Route path="/login" render={({ history }) => (
+              <Login
+                history={history}
+                onSubmit={this.handleLogin}
+              />)}
+            />
+            <Route path="/register" render={({ history }) => (
+              <Register
+                history={history}
+                onSubmit={this.handleRegister}
+              />)}
+            />
             <Route
               path="/cart"
               render={({ history }) => (
@@ -240,11 +305,19 @@ class App extends Component {
                   recommended={this.state.recommended}
                   onDelete={this.handleDelete}
                   onEdit={this.handleEdit}
+                  onUpdate={this.handleUpdate}
                   history={history}
+                  user={this.props.user}
                 />
               )}
             />
-            <Route path="/sell" render={() => (<Sell/>)} />
+            <Route path="/sell" render={({ history }) => (
+              <Sell
+                user={this.state.user}
+                history={history}
+              />)}
+            />
+            <Route path="/:id" render={() => (<Footer/>)} />
           </main>
         </div>
       </Router>
