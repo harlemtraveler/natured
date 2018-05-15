@@ -24,7 +24,12 @@ class App extends Component {
       cart: [],
       total: 0,
       recommended: [],
-      user: null
+      user: {
+        email: "testing@g.co",
+        iat: 1526396691,
+        id: 1,
+        username: "gjames"
+      }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -32,6 +37,7 @@ class App extends Component {
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
+    this.changeUserInfo = this.changeUserInfo.bind(this);
   }
 
   fetchProducts() {
@@ -177,6 +183,10 @@ class App extends Component {
     })
   }
 
+  changeUserInfo(info) {
+    console.log(info);
+  }
+
   updateCart() {
     this.fetchCartItems();
     this.fetchOrderTotal();
@@ -206,6 +216,9 @@ class App extends Component {
   handleLogin(creds) {
     login(creds)
     .then(user => this.setState({user}))
+    .catch(err => {
+      console.log('err');
+    })
   }
 
   handleRegister(creds) {
@@ -271,6 +284,7 @@ class App extends Component {
             <Route path="/about" render={() => (<About/>)} />
             <Route path="/login" render={({ history }) => (
               <Login
+                user={this.state.user}
                 history={history}
                 onSubmit={this.handleLogin}
               />)}
@@ -299,6 +313,7 @@ class App extends Component {
             <Route path="/sell" render={({ history }) => (
               <Sell
                 user={this.state.user}
+                onSubmit={this.changeUserInfo}
                 history={history}
               />)}
             />
