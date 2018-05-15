@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-<<<<<<< HEAD
 class Footer extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +12,6 @@ class Footer extends Component {
   }
 
  getQuote() {
-=======
- function Footer(props) {
-   function getQuote() {
->>>>>>> cf9b2a2ea8e369c32b23a5f39d07c3d8af54417c
       const url = `http://quotes.rest/qod.json?category=inspire`;
       fetch(url)
       .then((resp) => resp.json())
