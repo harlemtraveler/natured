@@ -1,13 +1,64 @@
-//import React, { Component } from 'react';
+function newProduct(attrs = {}) {
+  const product = {
+    id: uuid.v4(),
+    img_url: attrs.img_url || 'https://images.unsplash.com/photo-1520285774798-2f1616131a68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2d5d974849f34da57c1eaac884b3c55&auto=format&fit=crop&w=1650&q=80',
+    title: attrs.title || 'Product',
+    description: attrs.project || 'Description',
+  };
+
+  return product;
+}
 
 class ProductDashboard extends React.Component {
   state = {
     products: [
       {
         id: uuid.v4(),
+        img_url: 'https://images.unsplash.com/photo-1520285774798-2f1616131a68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2d5d974849f34da57c1eaac884b3c55&auto=format&fit=crop&w=1650&q=80',
+        title: 'Kitten',
+        description: 'Just a cute kitten, gotta get a dog',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://images.unsplash.com/photo-1520285774798-2f1616131a68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2d5d974849f34da57c1eaac884b3c55&auto=format&fit=crop&w=1650&q=80',
+        title: 'puppy',
+        description: 'Just a cute puppy!',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://imgur.com/f9ubYZX',
+        title: 'elmo',
+        description: 'Creeper Elmo',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://imgur.com/f9ubYZX',
+        title: 'Jim Jones',
+        description: 'Dipset',
+      },
+      {
+        id: uuid.v4(),
         img_url: 'https://imgur.com/f9ubYZX',
         title: 'Kitten',
         description: 'Just a cute kitten, gotta get a dog',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://imgur.com/f9ubYZX',
+        title: 'puppy',
+        description: 'Just a cute puppy!',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://imgur.com/f9ubYZX',
+        title: 'elmo',
+        description: 'Creeper Elmo',
+      },
+      {
+        id: uuid.v4(),
+        img_url: 'https://imgur.com/f9ubYZX',
+        title: 'Jim Jones',
+        description: 'Dipset',
       },
     ],
   };
@@ -25,7 +76,7 @@ class ProductDashboard extends React.Component {
   }
 
   createProduct = (product) => {
-    const t = helpers.newProduct(product);
+    const t = newProduct(product); //This function was originally puller from the helpers.js file
     this.setState({
       products: this.state.products.concat(t),
     });
@@ -56,7 +107,7 @@ class ProductDashboard extends React.Component {
   render() {
     return(
       <div className="ui three column centered grid">
-        <div className="column">
+        <div className="parent">
           <EditableProductList
             products={this.state.products}
             onFormSubmit={this.handleEditFormSubmit}
@@ -126,7 +177,7 @@ class EditableProductList extends React.Component {
       />
     ));
     return(
-      <div id="products">
+      <div id="products" className="parent">
         {products}
       </div>
     );
@@ -167,6 +218,8 @@ class EditableProduct extends React.Component {
           img_url={this.props.img_url}
           title={this.props.title}
           description={this.props.description}
+          onFormSubmit={this.handleSubmit}
+          onFormClose={this.handleFormClose}
         />
       );
     } else {
@@ -182,24 +235,23 @@ class EditableProduct extends React.Component {
 }
 
 class Product extends React.Component {
-
   handleTrashClick = () => {
     this.props.onTrashClick(this.props.id);
   }
 
-  //const headerStyle = {
-  //  backgroundImage: `url('https://imgur.com/f9ubYZX')`
-  //}
   render() {
-    //const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+    const picture = this.props.img_url || 'https://images.unsplash.com/photo-1520285774798-2f1616131a68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2d5d974849f34da57c1eaac884b3c55&auto=format&fit=crop&w=1650&q=80';
+    const divStyle = {
+      backgroundImage: `url(${picture})`
+    };
     return(
       <div className="ui centered card">
         <div className="content">
           <div
             className="header"
-            //style={headerStyle}
+            style={divStyle}
           >
-            {this.props.img_url}
+            <img src={picture}></img>
           </div>
           <div className="meta">
             {this.props.title}
@@ -209,7 +261,7 @@ class Product extends React.Component {
           </div>
           <div className="extra content">
             <span
-              className="right floated edit icon"
+              className="right floated edit icon edit-icon"
               onClick={this.props.onEditClick}
             >
               <i className="edit icon" />
@@ -222,7 +274,7 @@ class Product extends React.Component {
             </span>
           </div>
         </div>
-        <div className="ui bottom attached blue basic button">
+        <div className="ui bottom attached blue basic button details-button">
           Details
         </div>
       </div>
@@ -246,7 +298,7 @@ class ProductForm extends React.Component {
   }
 
   handleDescriptionChange = (e) => {
-    this.setState({ project: e.target.value });
+    this.setState({ description: e.target.value });
   }
 
   handleSubmit = (e) => {
@@ -254,7 +306,7 @@ class ProductForm extends React.Component {
       id: this.props.id,
       img_url: this.state.img_url,
       title: this.state.title,
-      project: this.state.project
+      description: this.state.description
     });
   };
 
@@ -276,7 +328,7 @@ class ProductForm extends React.Component {
             <input
               type="text"
               value={this.state.title}
-              onChange={this.handleImageChange}
+              onChange={this.handleTitleChange}
             />
           </div>
           <div className="field">
