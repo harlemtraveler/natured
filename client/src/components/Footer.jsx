@@ -29,11 +29,11 @@ class Footer extends Component {
   render () {
     return (
       <div className="footer nav">
-        <p>{this.state.quote}</p>
+        <p className="quote-padding">{this.state.quote}</p>
         <div className="wrapper">
           <ul>
             <li><Link to="/about">About</Link></li>
-            <li>Contact Us</li>
+            <li><Link to="/contact">Contact Us</Link></li>
           </ul>
           <div className="logo">
             <Link to="/categories">
@@ -41,7 +41,7 @@ class Footer extends Component {
             </Link>
           </div>
           <ul>
-            <li className="nav-right space-right"><Link to="/categories">WORK FOR US</Link></li>
+            <li className="nav-right space-right"><Link to="/apply">WORK FOR US</Link></li>
             <li className="nav-right"><Link to="/sell">FAQ</Link></li>
           </ul>
         </div>
