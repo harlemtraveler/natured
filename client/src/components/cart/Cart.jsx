@@ -54,7 +54,9 @@ function Cart(props) {
           onUpdate={props.onUpdate}
         />
         <h3>Recommended Items:</h3>
-        {recommendedItems}
+        <div className="recommended-container">
+          {recommendedItems}
+        </div>
       </div>
     </div>
   )

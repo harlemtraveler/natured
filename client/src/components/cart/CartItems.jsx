@@ -16,8 +16,6 @@ class CartItems extends Component {
     const { product } = this.props;
 
     const imgUrl = {
-      width: '150px',
-      height: '150px',
       backgroundImage: `url(${product.img_url})`,
       backgroundSize: 'cover',
       backgroundPosition: 'left center'
@@ -26,7 +24,7 @@ class CartItems extends Component {
     return (
       <div className="cart">
         <div>
-          <div style={imgUrl}></div>
+          <div className="cart-img" style={imgUrl}></div>
         </div>
         <div className="cart-product-info">
           <h4>{product.name} ---- ${product.price}</h4>

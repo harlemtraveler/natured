@@ -55,9 +55,28 @@ function restrict(req, res, next) {
   }))
 }
 
+function updateUser(req, res, next) {
+  authDb.updateUser(req.body)
+  .catch(err => res.status(401).json({
+    status: 'Error',
+    message: 'Username and email wer\'e not updated'
+  }))
+  .then(data => tokenService.makeToken({
+    id: data.id,
+    username: data.username,
+    email: data.email
+  }))
+  .then(token => {
+    res.json({
+      token
+    })
+  })
+}
+
 module.exports = {
   register,
   login,
   receiveToken,
-  restrict
+  restrict,
+  updateUser
 }
