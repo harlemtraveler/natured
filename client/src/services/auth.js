@@ -11,6 +11,10 @@ function saveToken(respBody) {
   return user;
 }
 
+function logout() {
+  localStorage.removeItem('authToken');
+}
+
 function login(creds) {
   const options = {
     method: 'POST',
@@ -39,5 +43,6 @@ function register(creds) {
 
 export {
   login,
-  register
+  register,
+  logout
 }

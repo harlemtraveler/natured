@@ -245,7 +245,7 @@ class App extends Component {
         <div>
           <main>
             <Route exact path="/" render={() => (<Landing />)} />
-            <Route path="/:id" render={() => (<Nav />)} />
+            <Route path="/:id" render={() => (<Nav user={this.state.user}/>)} />
             <Switch>
               <Route
                 exact
