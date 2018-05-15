@@ -29,7 +29,6 @@ componentDidMount() {
 render () {
   return (
     <div className="footer nav">
-    <p className="quote-padding">{this.state.quote}</p>
     <div className="wrapper">
       <ul>
         <li><Link to="/about">About</Link></li>
@@ -45,6 +44,7 @@ render () {
         <li className="nav-right"><Link to="/faq">FAQ</Link></li>
       </ul>
     </div>
+    <p className="quote-padding">{this.state.quote}</p>
     </div>
   )
 }

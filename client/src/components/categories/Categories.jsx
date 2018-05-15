@@ -19,8 +19,8 @@ function Categories(props) {
     <div>
       <div className="flex-container">
         <Banner
-          image="https://images.unsplash.com/photo-1485745352553-859d7a306fbd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d57b648befb46f55dfd0fb04ae51d4e3&auto=format&fit=crop&w=1050&q=80"
-          text="Andes Mountains"
+          image="https://images.unsplash.com/photo-1508705797775-df0a02b53113?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ba9c90ede15a4a5e0e391c6478d07f5c&auto=format&fit=crop&w=2550&q=80"
+          text="Mt.Rainier National Park"
         />
         {categories}
       </div>
