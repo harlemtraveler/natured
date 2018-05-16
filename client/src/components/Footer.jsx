@@ -12,7 +12,7 @@ class Footer extends Component {
   }
 
  getQuote() {
-  const url = `http://quotes.rest/qod.json?category=inspire`;
+  const url = `https://quotes.rest/qod.json?category=inspire`;
   fetch(url)
     .then((resp) => resp.json())
     .then(data => {
