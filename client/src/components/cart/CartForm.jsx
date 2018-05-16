@@ -16,15 +16,12 @@ class CartForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state.edited);
     this.props.onEdit(this.state.edited);
     this.props.history.push('/cart');
   }
 
   handleChange(e) {
     const editedProduct = this.state.edited;
-    console.log(this.state.edited);
-    console.log(e.target.value);
     editedProduct[e.target.name] = e.target.value;
     this.setState({
       edited: editedProduct
