@@ -1,21 +1,15 @@
 import React, { Component } from 'react';
 import EditableProductList from './EditableProductList';
-import ToggleableProductForm from './ToggleableProductForm';
+import ProductFormSetup from './ProductFormSetup';
 
 class ProductDashboard extends Component {
-  state = {
-    products: [
-      {
-        id: 'uuid.v4()',
-        img_url: 'https://imgur.com/f9ubYZX',
-        title: 'Kitten',
-        description: 'Just a cute kitten, gotta get a dog',
-      },
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.handleCreateFormSubmit = this.handleCreateFormSubmit.bind(this);
+  }
 
-  handleCreateFormSubmit = (product) => {
-    this.createProduct(product);
+  handleCreateFormSubmit(product) {
+    this.props.onSubmit(product);
   };
 
   handleEditFormSubmit = (attrs) => {
@@ -25,10 +19,6 @@ class ProductDashboard extends Component {
   handleTrashClick = (ProductId) => {
     this.deleteProduct(ProductId);
   }
-
-  createProduct = (product) => {
-    console.log(product);
-  };
 
   updateProduct = (attrs) => {
     this.setState({
@@ -55,18 +45,23 @@ class ProductDashboard extends Component {
   render() {
     return(
       <div className="ui three column centered grid">
-        <div className="column">
-          <EditableProductList
-            products={this.state.products}
-            onFormSubmit={this.handleEditFormSubmit}
-            onTrashClick={this.handleTrashClick}
+        <div className="parent">
+          <ProductFormSetup
+            states={this.props.states}
+            categories={this.props.categories}
+            onSubmit={this.handleCreateFormSubmit}
+            user={this.props.user}
           />
-          <ToggleableProductForm
-            onFormSubmit={this.handleCreateFormSubmit}
+          <EditableProductList
+            products={this.props.userProducts}
+            states={this.props.states}
+            categories={this.props.categories}
+            user={this.props.user}
+            onDelete={this.props.onDelete}
           />
         </div>
       </div>
-    );
+    )
   }
 }
 

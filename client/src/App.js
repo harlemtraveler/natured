@@ -24,7 +24,9 @@ class App extends Component {
     this.state = {
       categories: [],
       products: [],
+      userProducts: [],
       cart: [],
+      states: [],
       total: 0,
       recommended: [],
       user: {
@@ -40,7 +42,8 @@ class App extends Component {
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
-    this.changeUserInfo = this.changeUserInfo.bind(this);
+    this.createProduct = this.createProduct.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   fetchProducts() {
@@ -67,6 +70,19 @@ class App extends Component {
         categories: respBody.contents
      })
     });
+  }
+
+  fetchStates() {
+    fetch('/api/states')
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        states: respBody.contents
+      })
+    })
   }
 
   fetchCartItems() {
@@ -110,6 +126,19 @@ class App extends Component {
         recommended: respBody.contents
      })
     });
+  }
+
+  fetchUserProducts() {
+    fetch(`/api/products/user/${this.state.user.id}`)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        userProducts: respBody.contents
+      })
+    })
   }
 
   addToCart(info) {
@@ -186,8 +215,36 @@ class App extends Component {
     })
   }
 
-  changeUserInfo(info) {
-    console.log(info);
+  createProduct(product) {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch('api/products', options)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(respBody => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+    })
+  }
+
+  deleteProduct(id) {
+    fetch(`/api/products/${id}`, {method: 'DELETE'})
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(() => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+    })
   }
 
   updateCart() {
@@ -231,8 +288,10 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchProducts();
+    this.fetchUserProducts();
     this.fetchCategories();
     this.fetchRecommended();
+    this.fetchStates();
     if(this.state.user) {
       this.updateCart();
     }
@@ -318,8 +377,12 @@ class App extends Component {
             />
             <Route path="/sell" render={({ history }) => (
               <Sell
+                userProducts={this.state.userProducts}
+                states={this.state.states}
+                categories={this.state.categories}
                 user={this.state.user}
-                onSubmit={this.changeUserInfo}
+                onSubmit={this.createProduct}
+                onDelete={this.deleteProduct}
                 history={history}
               />)}
             />

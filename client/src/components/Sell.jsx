@@ -27,7 +27,14 @@ class Sell extends Component {
 
             <div className="seller-info">
               <div>
-                <ProductDashboard />
+                <ProductDashboard
+                  user={this.props.user}
+                  userProducts={this.props.userProducts}
+                  states={this.props.states}
+                  categories={this.props.categories}
+                  onSubmit={this.props.onSubmit}
+                  onDelete={this.props.onDelete}
+                />
               </div>
             </div>
           </div>

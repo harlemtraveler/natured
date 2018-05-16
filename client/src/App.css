@@ -438,6 +438,44 @@ a:active {
   margin: 3%;
 }
 
+/* Seller content */
+.all-seller-products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.seller-products {
+  box-sizing: border-box;
+  width: 31%;
+  margin: 1%;
+  border: 2px solid #000;
+  text-align: center;
+}
+
+.seller-name {
+  margin: 10px 0 3px;
+  padding: 0;
+}
+
+.seller-description {
+  margin: 0;
+  padding: 0;
+}
+
+.details {
+  padding: 20px 0;
+}
+
+.details .headers {
+  color: darkGreen;
+}
+
+.details > * {
+  margin: 0;
+  padding: 0;
+}
+
 /* Media queries */
 
 @media screen and (max-width: 942px) {

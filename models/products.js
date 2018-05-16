@@ -24,15 +24,18 @@ function getRecommendedProducts(){
   return queryPromise;
 }
 
-function getUserProducts(){
+function getUserProducts(id){
   const queryPromise = db.any(`
-    SELECT user_id, name, description, price, category_id, stock
+    SELECT user_id, products.id, name, description, price, category_id, categories.category, stock, products.img_url, state_id, states.state
     FROM products
     JOIN users
     ON products.user_id = users.id
     JOIN categories
     ON products.category_id = categories.id
-    `);
+    JOIN states
+    ON states.id = products.state_id
+    WHERE user_id = $1
+    `, id);
   return queryPromise;
 }
 
@@ -83,6 +86,7 @@ function updateProduct(product) {
 
 module.exports = {
   getAllProducts,
+  getUserProducts,
   getRecommendedProducts,
   getOneProduct,
   createProduct,
