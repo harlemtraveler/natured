@@ -39,8 +39,8 @@ export default class Signup extends Component {
           text="Register"
         />
       <div className="login menu-links-padding">
-      <h1>Register</h1>
-      <p>Already have an account? Please click <a href="/register">here to login instead.</a></p>
+      <h1>Register for an Account</h1>
+      <p>Already have an account? Please click <a href="/register">here<br/> to login instead.</a></p>
       <form onSubmit={this.handleSubmit}>
         <div>
           <label htmlFor="username">Username</label>
@@ -79,8 +79,16 @@ export default class Signup extends Component {
         </div>
         <br/>
         <br/>
-        <button>Register</button>
+        <button className="submit">Create Account</button>
       </form>
+      </div>
+      <div className="help flex-item help-text">
+      <h1>Need Help?</h1>
+      <div>
+      <p className="help-text">Please refer to our <a href="/faq" className="link-highlight">
+        <span className="link-highlight">Frequently Asked Questions</span>
+          </a> or contact
+        <a href="/contact"><span className="link-highlight"> Customer Service</span></a> and we'll gladly help.</p></div>
       </div>
       </div>
     )

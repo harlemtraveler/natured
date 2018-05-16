@@ -8,7 +8,7 @@ h1, h2 {
 
 button {
   font-size: 16px;
-  font-family: 'Cousine', monospace;
+  font-family: 'Roboto', monospace;
 }
 
 * {
@@ -420,6 +420,19 @@ a:active {
   padding: 5px;
 }
 
+input {
+  background-color: black;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  width: 150px;
+  padding: 10px;
+}
+
+label {
+  padding: 10px;
+}
+
 .warning {
   color: red;
   font-size: 13px;
@@ -438,6 +451,34 @@ a:active {
   margin: 3%;
 }
 
+.submit {
+  background-color: black;
+  color: #ffffff;
+  outline: none;
+  width: 200px;
+  padding: 10px;
+}
+
+.help-text {
+  text-align: left;
+}
+
+.link-highlight {
+  color: red;
+}
+
+form {
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+}
+
+input {
+  background-color: black;
+}
+
+.link-highlight {
+  color: red;
+}
 /* Media queries */
 
 @media screen and (max-width: 942px) {

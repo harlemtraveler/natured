@@ -12,7 +12,7 @@ function Contact (props) {
     <div className="menu-links-padding">
     <h1>How can we help?</h1>
     <h2>Frequently Asked Questions</h2>
-    <p>Find the answers to our most commonly asked questions <a href="/here">here</a>.</p>
+    <p>Find the answers to our most commonly asked questions <a href="/here"><span className="link-highlight">here</span></a>.</p>
     <br/>
     <br/>
     <h2>Phone</h2>
