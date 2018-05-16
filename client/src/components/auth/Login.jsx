@@ -51,7 +51,7 @@ export default class Login extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               name="email"
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <br/>
@@ -62,7 +62,7 @@ export default class Login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               name="password"
-              autocomplete="off"
+              autoComplete="off"
             />
           </div>
           <br/>

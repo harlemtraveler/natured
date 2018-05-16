@@ -15,7 +15,7 @@ import Sell from './components/Sell';
 import Products from './components/products/Products';
 import ProductsView from './components/products/ProductsView';
 import Footer from './components/Footer';
-import { login, register } from './services/auth';
+import { login, register, logout } from './services/auth';
 
 class App extends Component {
   constructor(props) {
@@ -29,18 +29,14 @@ class App extends Component {
       states: [],
       total: 0,
       recommended: [],
-      user: {
-        email: "testing@g.co",
-        iat: 1526396691,
-        id: 1,
-        username: "gjames"
-      }
+      user: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
     this.createProduct = this.createProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
@@ -308,14 +304,21 @@ class App extends Component {
     .then(user => this.setState({user}))
   }
 
+  handleLogout() {
+    logout();
+    this.setState({
+      user: null
+    })
+  }
+
   componentDidMount() {
     this.fetchProducts();
-    this.fetchUserProducts();
     this.fetchCategories();
     this.fetchRecommended();
     this.fetchStates();
     if(this.state.user) {
       this.updateCart();
+      this.fetchUserProducts();
     }
   }
 
@@ -328,7 +331,12 @@ class App extends Component {
         <div>
           <main>
             <Route exact path="/" render={() => (<Landing />)} />
-            <Route path="/:id" render={() => (<Nav user={this.state.user}/>)} />
+            <Route path="/:id" render={() => (
+              <Nav
+                user={this.state.user}
+                logout={this.handleLogout}
+              />)}
+            />
             <Switch>
               <Route
                 exact
@@ -356,6 +364,7 @@ class App extends Component {
                     match={match}
                     onSubmit={this.handleSubmit}
                     history={history}
+                    user={this.state.user}
                   />
                 )} />
             </Switch>

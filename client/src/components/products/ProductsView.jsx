@@ -26,8 +26,14 @@ class ProductsView extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state.add);
-    this.props.history.push('/cart');
+    console.log(this.props);
+    if(this.props.user) {
+      this.props.onSubmit(this.state.add);
+      this.props.history.push('/cart');
+    }
+    else {
+      this.props.history.push('/login');
+    }
   }
 
   fetchProduct() {

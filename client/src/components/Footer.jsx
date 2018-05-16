@@ -34,11 +34,6 @@ class Footer extends Component {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
-          {/*<div className="logo">
-            <Link to="/categories">
-              <img src="https://i.imgur.com/Sgc4hu9.jpg" alt="Nature`D" />
-            </Link>
-          </div>*/}
           <ul>
             <li className="nav-right space-right"><Link to="/apply">WORK FOR US</Link></li>
             <li className="nav-right"><Link to="/faq">FAQ</Link></li>

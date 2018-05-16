@@ -20,10 +20,14 @@ button {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: white;
-  color: black;
   text-transform: uppercase;
   display: inline-block;
+  background: rgb(34, 34, 34);
+  color: #fff;
+}
+
+.footer li a {
+  color: #fff;
 }
 
 .footer ul {
@@ -31,7 +35,7 @@ button {
 }
 
 .quote-padding {
-  padding: 20px;
+  padding: 40px;
 }
 
 .viewmore:hover,
