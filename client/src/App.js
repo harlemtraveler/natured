@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Categories from './components/categories/Categories';
@@ -24,7 +24,9 @@ class App extends Component {
     this.state = {
       categories: [],
       products: [],
+      userProducts: [],
       cart: [],
+      states: [],
       total: 0,
       recommended: [],
       user: {
@@ -40,7 +42,9 @@ class App extends Component {
     this.handleUpdate = this.handleUpdate.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
-    this.changeUserInfo = this.changeUserInfo.bind(this);
+    this.createProduct = this.createProduct.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
   }
 
   fetchProducts() {
@@ -67,6 +71,19 @@ class App extends Component {
         categories: respBody.contents
      })
     });
+  }
+
+  fetchStates() {
+    fetch('/api/states')
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        states: respBody.contents
+      })
+    })
   }
 
   fetchCartItems() {
@@ -110,6 +127,19 @@ class App extends Component {
         recommended: respBody.contents
      })
     });
+  }
+
+  fetchUserProducts() {
+    fetch(`/api/products/user/${this.state.user.id}`)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.setState({
+        userProducts: respBody.contents
+      })
+    })
   }
 
   addToCart(info) {
@@ -186,8 +216,57 @@ class App extends Component {
     })
   }
 
-  changeUserInfo(info) {
-    console.log(info);
+  createProduct(product) {
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch('api/products', options)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json();
+    })
+    .then(respBody => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+    })
+  }
+
+  updateProduct(product) {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch(`/api/products/${product.id}`, options)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+      this.props.history.push('/sell');
+    })
+  }
+
+  deleteProduct(id) {
+    fetch(`/api/products/${id}`, {method: 'DELETE'})
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(() => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+    })
   }
 
   updateCart() {
@@ -231,8 +310,10 @@ class App extends Component {
 
   componentDidMount() {
     this.fetchProducts();
+    this.fetchUserProducts();
     this.fetchCategories();
     this.fetchRecommended();
+    this.fetchStates();
     if(this.state.user) {
       this.updateCart();
     }
@@ -242,7 +323,8 @@ class App extends Component {
     return (
     // each category image will be mapped through to create a individual flex items that link to all products
     // for that specific category
-      <Router>
+
+      <main>
         <div>
           <main>
             <Route exact path="/" render={() => (<Landing />)} />
@@ -318,15 +400,20 @@ class App extends Component {
             />
             <Route path="/sell" render={({ history }) => (
               <Sell
+                userProducts={this.state.userProducts}
+                states={this.state.states}
+                categories={this.state.categories}
                 user={this.state.user}
-                onSubmit={this.changeUserInfo}
+                onSubmit={this.createProduct}
+                onDelete={this.deleteProduct}
+                onEdit={this.updateProduct}
                 history={history}
               />)}
             />
             <Route path="/:id" render={() => (<Footer/>)} />
           </main>
         </div>
-      </Router>
+        </main>
     );
   }
 }

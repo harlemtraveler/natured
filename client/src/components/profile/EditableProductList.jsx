@@ -6,16 +6,16 @@ class EditableProductList extends Component {
     const products = this.props.products.map((product) => (
       <EditableProduct
         key={product.id}
-        id={product.id}
-        img_url={product.img_url}
-        title={product.title}
-        description={product.description}
-        onFormSubmit={this.props.onFormSubmit}
-        onTrashClick={this.props.onTrashClick}
+        product={product}
+        categories={this.props.categories}
+        states={this.props.states}
+        onSubmit={this.props.onSubmit}
+        onDelete={this.props.onDelete}
       />
     ));
+
     return(
-      <div id="products">
+      <div id="products" className="all-seller-products">
         {products}
       </div>
     );

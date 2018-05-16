@@ -1,52 +1,34 @@
 import React, { Component } from 'react';
 import ProductForm from './ProductForm';
 import Product from './Product';
+import { Switch, Route } from 'react-router-dom';
 
 class EditableProduct extends Component {
-  state = {
-    editFormOpen: false,
-  }
-
-  handleEditClick = () => {
-    this.openForm();
-  };
-
-  handleFormClose = () => {
-    this.closeForm();
-  };
-
-  handleSubmit = (product) => {
-    this.props.onFormSubmit(product);
-    this.closeForm();
-  };
-
-  closeForm = () => {
-    this.setState({ editFormOpen: false });
-  };
-
-  openForm = () => {
-    this.setState({ editFormOpen: true });
-  };
-
   render() {
-    if(this.state.editFormOpen) {
-      return(
-        <ProductForm
-          id={this.props.id}
-          img_url={this.props.img_url}
-          title={this.props.title}
-          description={this.props.description}
+    return (
+      <Switch>
+        <Route
+          exact
+          path={`/sell/product/edit/${this.props.product.id}`}
+          render={() => (
+            <ProductForm
+              product={this.props.product}
+              states={this.props.states}
+              categories={this.props.categories}
+              onSubmit={this.props.onSubmit}
+            />
+          )}
         />
-      );
-    } else {
-      return(
-        <Product
-          id={this.props.id}
-          onEditClick={this.handleEditClick}
-          onTrashClick={this.props.onTrashClick}
+        <Route
+          render={() => (
+            <Product
+              product={this.props.product}
+              onDelete={this.props.onDelete}
+            />
+          )}
         />
-      );
-    }
+      </Switch>
+    )
   }
 }
 

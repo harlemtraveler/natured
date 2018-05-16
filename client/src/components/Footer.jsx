@@ -25,7 +25,7 @@ class Footer extends Component {
   componentDidMount() {
     this.getQuote();
   }
-  
+
   render () {
     return (
       <div className="footer nav">
@@ -34,11 +34,11 @@ class Footer extends Component {
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact Us</Link></li>
           </ul>
-          <div className="logo">
+          {/*<div className="logo">
             <Link to="/categories">
               <img src="https://i.imgur.com/Sgc4hu9.jpg" alt="Nature`D" />
             </Link>
-          </div>
+          </div>*/}
           <ul>
             <li className="nav-right space-right"><Link to="/apply">WORK FOR US</Link></li>
             <li className="nav-right"><Link to="/faq">FAQ</Link></li>
