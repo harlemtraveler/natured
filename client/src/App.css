@@ -35,21 +35,16 @@ button {
 }
 
 .quote-padding {
-  padding: 40px;
-}
-
-.viewmore:hover,
-.product-info button:hover,
-.cart button:hover,
-.cart a:hover,
-.total button:hover {
-  color: #89cf7a;
-  border: 1px solid #89cf7a;
+  padding: 80px 40px 40px;
 }
 
 .links:hover {
   color: #89cf7a;
   border: 1px solid #89cf7a;
+}
+
+.logout {
+  cursor: pointer;
 }
 
 /* Landing page */

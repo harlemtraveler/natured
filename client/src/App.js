@@ -43,6 +43,8 @@ class App extends Component {
     this.updateProduct = this.updateProduct.bind(this);
   }
 
+  // Fetch calls to api
+
   fetchProducts() {
     fetch('/api/products')
     .then(resp => {
@@ -137,6 +139,8 @@ class App extends Component {
       })
     })
   }
+
+  // crud operations
 
   addToCart(info) {
     const options = {
@@ -270,6 +274,8 @@ class App extends Component {
     this.fetchOrderTotal();
   }
 
+  // handlers
+
   handleSubmit(info) {
     this.addToCart(info);
   }
@@ -293,7 +299,11 @@ class App extends Component {
 
   handleLogin(creds) {
     login(creds)
-    .then(user => this.setState({user}))
+    .then(user => {
+      this.setState({user})
+      this.fetchUserProducts();
+      this.updateCart();
+    })
     .catch(err => {
       console.log('err');
     })
@@ -309,6 +319,7 @@ class App extends Component {
     this.setState({
       user: null
     })
+    this.props.history.push('/categories');
   }
 
   componentDidMount() {
@@ -316,10 +327,6 @@ class App extends Component {
     this.fetchCategories();
     this.fetchRecommended();
     this.fetchStates();
-    if(this.state.user) {
-      this.updateCart();
-      this.fetchUserProducts();
-    }
   }
 
   render() {

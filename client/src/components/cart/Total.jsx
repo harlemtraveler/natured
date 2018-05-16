@@ -26,7 +26,7 @@ class Total extends Component {
     return (
       <div className="total">
         <h3>Order Total: ${this.props.total}</h3>
-        <button onClick={this.handleClick}>Checkout</button>
+        <button className="links" onClick={this.handleClick}>Checkout</button>
       </div>
     )
   }

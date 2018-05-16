@@ -17,7 +17,7 @@ class Nav extends Component {
           <ul>
             <li><Link to="/about">ABOUT</Link></li>
             {this.props.user ? (
-              <li onClick={this.handleLogout}>LOGOUT</li>
+              <li className="logout" onClick={this.handleLogout}>LOGOUT</li>
             ) : (
               <span>
                 <li><Link to="/login">LOGIN</Link></li>

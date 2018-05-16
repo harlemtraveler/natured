@@ -126,8 +126,6 @@ Users will be able to view all products and filter products by categories, by cl
 Users who are buyers are able to:
 
 * Create an account
-* Delete their account
-* Update their account
 * View all products
 * View by catgories
 * Create a product

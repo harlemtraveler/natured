@@ -13,7 +13,7 @@ function Product(props) {
       </div>
 
       <Link to={`/categories/${category}/${id}`}>
-        <p className="view-more">View More</p>
+        <p className="view-more links">View More</p>
       </Link>
     </div>
   )

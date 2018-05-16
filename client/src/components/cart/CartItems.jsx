@@ -32,8 +32,8 @@ class CartItems extends Component {
           {this.props.onDelete ? (
             <div>
               <p>Quantity: x{product.quantity}</p>
-              <Link to={`/cart/edit/${product.id}`}>Edit Quantity</Link>
-              <button onClick={this.handleDelete}>Delete From Cart</button>
+              <Link className="links" to={`/cart/edit/${product.id}`}>Edit Quantity</Link>
+              <button className="links" onClick={this.handleDelete}>Delete From Cart</button>
             </div>
           ) : (
             <CartForm
