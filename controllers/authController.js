@@ -4,7 +4,7 @@ const authDb = require('../models/auth');
 function register(req, res) {
   authDb.register(req.body)
   .catch(err => res.status(401).json({
-    message: "Email is already registered"
+    message: err.message
   }))
   .then(data => tokenService.makeToken({
     id: data.id,
