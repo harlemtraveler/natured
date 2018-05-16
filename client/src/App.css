@@ -415,8 +415,8 @@ a:active {
 }
 
 input {
-  background-color: black;
-  color: #ffffff;
+  background-color: #000;
+  color: #fff;
   border: none;
   outline: none;
   width: 150px;
@@ -486,6 +486,8 @@ input {
 }
 
 .form-content input, .form-content select {
+  background-color: #fff;
+  color: #000;
   display: inline-block;
   width: calc(100% - 180px);
   font-size: 17px;
