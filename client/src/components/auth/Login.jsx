@@ -51,6 +51,7 @@ export default class Login extends Component {
               value={this.state.email}
               onChange={this.handleChange}
               name="email"
+              autocomplete="off"
             />
           </div>
           <br/>
@@ -61,12 +62,21 @@ export default class Login extends Component {
               value={this.state.password}
               onChange={this.handleChange}
               name="password"
+              autocomplete="off"
             />
           </div>
           <br/>
           <br/>
-          <button type="submit">Login</button>
+          <button type="submit" className="submit">Login</button>
         </form>
+      </div>
+      <div className="help flex-item help-text">
+      <h1>Need Help?</h1>
+      <div>
+      <p className="help-text">Please refer to our <a href="/faq" className="link-highlight">
+        <span className="link-highlight">Frequently Asked Questions</span>
+          </a> or contact
+        <a href="/contact"><span className="link-highlight"> Customer Service</span></a> and we'll gladly help.</p></div>
       </div>
       </div>
     );
