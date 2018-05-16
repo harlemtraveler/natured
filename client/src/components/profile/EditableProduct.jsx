@@ -15,6 +15,7 @@ class EditableProduct extends Component {
               product={this.props.product}
               states={this.props.states}
               categories={this.props.categories}
+              onSubmit={this.props.onSubmit}
             />
           )}
         />

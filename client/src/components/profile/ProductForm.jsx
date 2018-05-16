@@ -6,6 +6,7 @@ class ProductForm extends Component {
     super(props);
     this.state = {
       user_id: '',
+      id: '',
       name: '',
       description: '',
       price: '',
@@ -30,6 +31,7 @@ class ProductForm extends Component {
     this.props.onSubmit(this.state);
     this.setState({
       name: '',
+      id: '',
       description: '',
       price: '',
       category_id: '',
@@ -47,6 +49,7 @@ class ProductForm extends Component {
     } else {
       this.setState({
         name: this.props.product.name,
+        id: this.props.product.id,
         description: this.props.product.description,
         price: this.props.product.price,
         category_id: this.props.product.category_id,
@@ -58,110 +61,107 @@ class ProductForm extends Component {
   }
 
   render() {
-    console.log(this.props.product);
     return(
-      <div className="ui centered card">
-        <div className="content">
-          <form onSubmit={this.handleSubmit}>
-            <div className="field">
-              <label htmlFor="name">Name</label>
-              <input
-                required
-                type="text"
-                name="name"
-                value={this.state.name}
-                onChange={this.handleChange}
-              />
+      <div className="form-content">
+        <form onSubmit={this.handleSubmit}>
+          <div className="field">
+            <label htmlFor="name">Name</label>
+            <input
+              required
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="description">Description</label>
+            <input
+              required
+              type="text"
+              name="description"
+              value={this.state.description}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="price">Price</label>
+            <input
+              required
+              min="0"
+              type="number"
+              name="price"
+              value={this.state.price}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="category_id">Category</label>
+            <select
+              name="category_id"
+              value={this.state.category_id}
+              onChange={this.handleChange}
+            >
+              {this.props.categories.map(category => {
+                return (
+                  <option
+                    key={category.id}
+                    value={category.id}
+                  >
+                    {category.category}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+          <div className="field">
+            <label htmlFor="stock">Stock</label>
+            <input
+              required
+              min="1"
+              type="number"
+              name="stock"
+              value={this.state.stock}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="img_url">Image URL</label>
+            <input
+              type="text"
+              name="img_url"
+              value={this.state.img_url}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="state_id">State</label>
+            <select
+              name="state_id"
+              value={this.state.state_id}
+              onChange={this.handleChange}
+            >
+              {this.props.states.map(state => {
+                return (
+                  <option
+                    key={state.id}
+                    value={state.id}
+                  >
+                    {state.state}
+                  </option>
+                )
+              })}
+            </select>
+          </div>
+          {this.props.user ? (
+            <button className="links create" value="submit">Create</button>
+          ) : (
+            <div className="update-buttons">
+              <button className="links update" value="submit">Save changes</button>
+              <Link className="links update" to="/sell">Cancel</Link>
             </div>
-            <div className="field">
-              <label htmlFor="description">Description</label>
-              <input
-                required
-                type="text"
-                name="description"
-                value={this.state.description}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="price">Price</label>
-              <input
-                required
-                min="0"
-                type="number"
-                name="price"
-                value={this.state.price}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="category_id">Category</label>
-              <select
-                name="category_id"
-                value={this.state.category_id}
-                onChange={this.handleChange}
-              >
-                {this.props.categories.map(category => {
-                  return (
-                    <option
-                      key={category.id}
-                      value={category.id}
-                    >
-                      {category.category}
-                    </option>
-                  )
-                })}
-              </select>
-            </div>
-            <div className="field">
-              <label htmlFor="stock">Stock</label>
-              <input
-                required
-                min="1"
-                type="number"
-                name="stock"
-                value={this.state.stock}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="img_url">Image URL</label>
-              <input
-                type="text"
-                name="img_url"
-                value={this.state.img_url}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="field">
-              <label htmlFor="state_id">State</label>
-              <select
-                name="state_id"
-                value={this.state.state_id}
-                onChange={this.handleChange}
-              >
-                {this.props.states.map(state => {
-                  return (
-                    <option
-                      key={state.id}
-                      value={state.id}
-                    >
-                      {state.state}
-                    </option>
-                  )
-                })}
-              </select>
-            </div>
-            {this.props.user ? (
-              <button value="submit">Create</button>
-            ) : (
-              <div>
-                <button value="submit">Save changes</button>
-                <Link to="/sell">Cancel</Link>
-              </div>
-            )}
-          </form>
-        </div>
+          )}
+        </form>
       </div>
     );
   }

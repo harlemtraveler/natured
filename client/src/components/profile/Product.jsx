@@ -34,8 +34,10 @@ class Product extends Component {
             <p>Located in <span className="headers">{product.state}</span></p>
           </div>
         </div>
-        <Link to={`/sell/product/edit/${product.id}`}>Update</Link>
-        <button onClick={this.handleClick}>Delete</button>
+        <div className="update-buttons">
+          <Link className="links" to={`/sell/product/edit/${product.id}`}>Update</Link>
+          <button className="links" onClick={this.handleClick}>Delete</button>
+        </div>
       </div>
     );
   }

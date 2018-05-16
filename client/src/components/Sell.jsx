@@ -34,6 +34,7 @@ class Sell extends Component {
                   categories={this.props.categories}
                   onSubmit={this.props.onSubmit}
                   onDelete={this.props.onDelete}
+                  onEdit={this.props.onEdit}
                 />
               </div>
             </div>

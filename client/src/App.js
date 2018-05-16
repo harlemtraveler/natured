@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Landing from './components/Landing';
 import Nav from './components/Nav';
 import Categories from './components/categories/Categories';
@@ -44,6 +44,7 @@ class App extends Component {
     this.handleRegister = this.handleRegister.bind(this);
     this.createProduct = this.createProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
+    this.updateProduct = this.updateProduct.bind(this);
   }
 
   fetchProducts() {
@@ -235,6 +236,27 @@ class App extends Component {
     })
   }
 
+  updateProduct(product) {
+    const options = {
+      method: 'PUT',
+      body: JSON.stringify(product),
+      headers: {
+        'content-type': 'application/json'
+      }
+    }
+
+    fetch(`/api/products/${product.id}`, options)
+    .then(resp => {
+      if (!resp.ok) throw new Error('There was an error');
+      return resp.json()
+    })
+    .then(respBody => {
+      this.fetchProducts();
+      this.fetchUserProducts();
+      this.props.history.push('/sell');
+    })
+  }
+
   deleteProduct(id) {
     fetch(`/api/products/${id}`, {method: 'DELETE'})
     .then(resp => {
@@ -301,7 +323,8 @@ class App extends Component {
     return (
     // each category image will be mapped through to create a individual flex items that link to all products
     // for that specific category
-      <Router>
+
+      <main>
         <div>
           <main>
             <Route exact path="/" render={() => (<Landing />)} />
@@ -383,13 +406,14 @@ class App extends Component {
                 user={this.state.user}
                 onSubmit={this.createProduct}
                 onDelete={this.deleteProduct}
+                onEdit={this.updateProduct}
                 history={history}
               />)}
             />
             <Route path="/:id" render={() => (<Footer/>)} />
           </main>
         </div>
-      </Router>
+        </main>
     );
   }
 }

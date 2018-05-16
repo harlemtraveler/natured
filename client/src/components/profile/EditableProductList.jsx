@@ -9,6 +9,7 @@ class EditableProductList extends Component {
         product={product}
         categories={this.props.categories}
         states={this.props.states}
+        onSubmit={this.props.onSubmit}
         onDelete={this.props.onDelete}
       />
     ));

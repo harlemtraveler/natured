@@ -12,36 +12,6 @@ class ProductDashboard extends Component {
     this.props.onSubmit(product);
   };
 
-  handleEditFormSubmit = (attrs) => {
-    this.updateProduct(attrs);
-  };
-
-  handleTrashClick = (ProductId) => {
-    this.deleteProduct(ProductId);
-  }
-
-  updateProduct = (attrs) => {
-    this.setState({
-      products: this.state.products.map((product) => {
-        if (product.id === attrs.id) {
-          return Object.assign({}, product, {
-            img_url: attrs.img_url,
-            title: attrs.title,
-            description: attrs.description,
-          });
-        } else {
-          return product;
-        }
-      }),
-    });
-  };
-
-  deleteProduct = (ProductId) => {
-    this.setState({
-      products: this.state.products.filter(t => t.id !== ProductId),
-    });
-  }
-
   render() {
     return(
       <div className="ui three column centered grid">
@@ -57,6 +27,7 @@ class ProductDashboard extends Component {
             states={this.props.states}
             categories={this.props.categories}
             user={this.props.user}
+            onSubmit={this.props.onEdit}
             onDelete={this.props.onDelete}
           />
         </div>
