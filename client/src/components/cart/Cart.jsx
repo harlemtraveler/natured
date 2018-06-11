@@ -44,6 +44,7 @@ function Cart(props) {
 
   return (
     <div>
+    <div>
     <div className="flex-container">
         <Banner
           image="https://images.unsplash.com/photo-1448842215777-02928daa9d5f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a7d075fc685e063a6e6777118cce522&auto=format&fit=crop&w=2464&q=80"
