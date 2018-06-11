@@ -26,8 +26,13 @@ class ProductsView extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.onSubmit(this.state.add);
-    this.props.history.push('/cart');
+    if(this.props.user) {
+      this.props.onSubmit(this.state.add);
+      this.props.history.push('/cart');
+    }
+    else {
+      this.props.history.push('/login');
+    }
   }
 
   fetchProduct() {
@@ -85,7 +90,7 @@ class ProductsView extends Component {
                   {options}
                 </select>
               </div>
-              <button value="submit">Add to Cart</button>
+              <button className="links" value="submit">Add to Cart</button>
             </form>
           </div>
         </div>

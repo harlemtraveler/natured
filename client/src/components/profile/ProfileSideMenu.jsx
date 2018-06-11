@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import ProfilePicture from './ProfilePicture';
-import EditableProfileInformationCard from './EditableProfileInformationCard';
+import ProfileInformationCard from './ProfileInformationCard';
 
 class ProfileSideMenu extends Component {
   render() {
     return(
       <div className="profile-side-menu-container">
         <ProfilePicture />
-        <EditableProfileInformationCard
+        <ProfileInformationCard
           user={this.props.user}
-          onSubmit={this.props.onSubmit}
         />
       </div>
     );

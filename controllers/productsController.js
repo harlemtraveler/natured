@@ -12,6 +12,17 @@ function getAllProducts(req, res, next) {
   })
 }
 
+function getUserProducts(req, res, next) {
+  productsDb.getUserProducts(req.params.id)
+  .then(data => {
+    res.locals.contents = data;
+    next();
+  })
+  .catch(err => {
+    next(err);
+  })
+}
+
 function getRecommendedProducts(req, res, next) {
   productsDb.getRecommendedProducts()
   .then(data => {
@@ -70,6 +81,7 @@ function deleteProduct(req, res, next) {
 
 module.exports = {
   getAllProducts,
+  getUserProducts,
   getRecommendedProducts,
   getOneProduct,
   createProduct,

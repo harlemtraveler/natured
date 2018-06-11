@@ -1,48 +1,42 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Product extends Component {
-
-  handleTrashClick = () => {
-    this.props.onTrashClick(this.props.id);
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  //const headerStyle = {
-  //  backgroundImage: `url('https://imgur.com/f9ubYZX')`
-  //}
+  handleClick(e) {
+    this.props.onDelete(this.props.product.id);
+  }
+
   render() {
-    //const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+    const { product } = this.props;
+    const img = {
+      width: '100%',
+      height: '200px',
+      background: `url(${product.img_url})`,
+      backgroundSize: 'cover'
+    }
+
     return(
-      <div className="ui centered card">
-        <div className="content">
-          <div
-            className="header"
-            //style={headerStyle}
-          >
-            {this.props.img_url}
-          </div>
-          <div className="meta">
-            {this.props.title}
-          </div>
-          <div className="centered aligned description">
-            {this.props.description}
-          </div>
-          <div className="extra content">
-            <span
-              className="right floated edit icon"
-              onClick={this.props.onEditClick}
-            >
-              <i className="edit icon" />
-            </span>
-            <span
-              className="right floated trash icon"
-              onClick={this.handleTrashClick}
-            >
-              <i className="trash icon" />
-            </span>
+      <div className="seller-products">
+        <div style={img}></div>
+        <div>
+          <h3 className="seller-name">{product.name}</h3>
+          <p className="seller-description">{product.description}</p>
+          <div className="details">
+            <h4 className="headers detail-heading">Details</h4>
+            <p><span className="headers">Price:</span> {product.price}</p>
+            <p><span className="headers">Category:</span> {product.category}</p>
+            <p><span className="headers">Stock:</span> {product.stock}</p>
+            <p>Located in <span className="headers">{product.state}</span></p>
           </div>
         </div>
-        <div className="ui bottom attached blue basic button">
-          Details
+        <div className="update-buttons">
+          <Link className="links" to={`/sell/product/edit/${product.id}`}>Update</Link>
+          <button className="links" onClick={this.handleClick}>Delete</button>
         </div>
       </div>
     );

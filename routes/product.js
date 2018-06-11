@@ -39,4 +39,11 @@ router.route('/:id')
     responseController.sendError
   )
 
+router.route('/user/:id')
+  .get(
+    productsController.getUserProducts,
+    responseController.sendStatus,
+    responseController.sendError
+  )
+
 module.exports = router;

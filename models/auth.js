@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const db = require('../config/connection');
 const bcrypt = require('bcrypt');
 
@@ -11,7 +13,7 @@ function register(user) {
     };
     return db.one(`
       INSERT INTO users (username, email, password_digest)
-      VALUES ($/username/ $/email/, $/password_digest/)
+      VALUES ($/username/, $/email/, $/password_digest/)
       RETURNING id, username, email
     `, newUser);
   });
